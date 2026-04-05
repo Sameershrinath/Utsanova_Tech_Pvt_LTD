@@ -1,0 +1,57 @@
+/* ============================= */
+/* CLIENT LOGO MARQUEE */
+/* ============================= */
+
+.logo-marquee-container {
+  display: flex;
+  overflow: hidden;
+  gap: 4rem;
+  padding: 1rem 0;
+  position: relative;
+}
+
+/* Smooth continuous track */
+.logo-track {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  flex-shrink: 0;
+  animation: scroll-x 20s linear infinite; /* slower = smoother */
+}
+
+/* Duplicate track for seamless loop */
+.logo-track:nth-child(2) {
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+
+.logo-track img {
+  width: 250px;
+  height: auto;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+/* Highlight middle logo */
+.logo-track img.active-middle {
+  filter: grayscale(0) invert(0) !important;
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+/* Hover effect */
+.logo-track img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Animation */
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
