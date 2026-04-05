@@ -1,0 +1,25 @@
+{
+  "name": "Utsanova",
+  "version": "2.0.0",
+  "main": "index.html",
+  "scripts": {
+    "tw-install": "npm install -D tailwindcss",
+    "tw-init": "npx tailwindcss init",
+    "tw-build": "npx tailwindcss -i ./src/css/tailwind.css -o ./assets/css/main.css --watch",
+    "tw-minify": "npx tailwindcss -o ./assets/css/main.min.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sameershrinath/Utsanova_Tech_Pvt_LTD.git"
+  },
+  "keywords": [
+    "company",
+    "landing page"
+  ],
+  "author": "Sameer shrinath",
+  "license": "MIT",
+  "description": "Landing page of UTSANOVA",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
