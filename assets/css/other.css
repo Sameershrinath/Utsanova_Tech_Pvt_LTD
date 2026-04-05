@@ -55,3 +55,17 @@
     transform: translateX(-100%);
   }
 }
+
+.section-contact{
+  position: relative;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 120px;
+  --tw-text-opacity: 1;
+  color: rgb(98 99 108 / var(--tw-text-opacity, 1));
+}
+
+.bg-primary{
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 35 75 / var(--tw-bg-opacity, 1));
+}
