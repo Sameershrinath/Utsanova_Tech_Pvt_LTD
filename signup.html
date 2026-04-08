@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — Utsanova Tech</title>
+  <meta name="description" content="Create your Utsanova Tech account and start building with our scalable digital solutions." />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+  <meta name="theme-color" content="#3d63dd" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./assets/css/auth.css" />
+</head>
+
+<body>
+  <div class="auth-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px;">
+      <div class="auth-card">
+        <a href="index.html">
+          <img src="./assets/img/utsanova_mono.svg" alt="Utsanova" class="auth-logo" />
+        </a>
+
+        <h1 class="auth-title">Create Account</h1>
+        <p class="auth-subtitle">Join Utsanova and start building</p>
+
+        <!-- Message -->
+        <div id="authMessage" class="auth-message" role="alert">
+          <span id="authMessageIcon"></span>
+          <span id="authMessageText"></span>
+        </div>
+
+        <!-- Google Sign-Up -->
+        <button type="button" id="googleSignupBtn" class="auth-btn auth-btn-google" onclick="handleGoogleSignup()">
+          <svg viewBox="0 0 48 48" width="20" height="20">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+          <span class="btn-text">Continue with Google</span>
+          <span class="auth-spinner"></span>
+        </button>
+
+        <div class="auth-divider">
+          <span>or sign up with email</span>
+        </div>
+
+        <!-- Signup Form -->
+        <form id="signupForm" onsubmit="handleSignup(event)">
+          <div class="auth-form-group">
+            <label for="signupName">Full Name</label>
+            <input type="text" id="signupName" placeholder="John Doe" required autocomplete="name" />
+            <div id="signupNameError" class="field-error"></div>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="signupEmail">Email Address</label>
+            <input type="email" id="signupEmail" placeholder="you@example.com" required autocomplete="email" />
+            <div id="signupEmailError" class="field-error"></div>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="signupPassword">Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="signupPassword" placeholder="Create a strong password" required autocomplete="new-password" oninput="updatePasswordStrength()" />
+              <button type="button" class="password-toggle" onclick="togglePasswordVisibility('signupPassword', this)" aria-label="Toggle password visibility">
+                <i class="lni lni-eye"></i>
+              </button>
+            </div>
+            <div class="password-strength" id="passwordStrengthContainer" style="display: none;">
+              <div class="password-strength-bar">
+                <div class="password-strength-fill" id="passwordStrengthFill"></div>
+              </div>
+              <div class="password-strength-text" id="passwordStrengthText"></div>
+            </div>
+            <div id="signupPasswordError" class="field-error"></div>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="signupConfirmPassword">Confirm Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="signupConfirmPassword" placeholder="Confirm your password" required autocomplete="new-password" />
+              <button type="button" class="password-toggle" onclick="togglePasswordVisibility('signupConfirmPassword', this)" aria-label="Toggle password visibility">
+                <i class="lni lni-eye"></i>
+              </button>
+            </div>
+            <div id="signupConfirmPasswordError" class="field-error"></div>
+          </div>
+
+          <label class="auth-checkbox">
+            <input type="checkbox" id="agreeTerms" required />
+            <span>I agree to the <a href="#" class="auth-link">Terms of Service</a> and <a href="#" class="auth-link">Privacy Policy</a></span>
+          </label>
+
+          <button type="submit" id="signupSubmitBtn" class="auth-btn auth-btn-primary">
+            <span class="btn-text">Create Account</span>
+            <span class="auth-spinner"></span>
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          Already have an account? <a href="login.html">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script src="./assets/js/firebase-config.js"></script>
+  <script src="./assets/js/auth.js"></script>
+
+  <script>
+    // Redirect if already logged in
+    Auth.redirectIfLoggedIn();
+
+    // ─── Handle Email Signup ────────────────────
+    async function handleSignup(e) {
+      e.preventDefault();
+      clearErrors();
+
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+      const agreeTerms = document.getElementById('agreeTerms').checked;
+
+      // Validation
+      let hasError = false;
+
+      if (name.length < 2) {
+        showFieldError('signupNameError', 'Name must be at least 2 characters');
+        hasError = true;
+      }
+
+      if (!Auth.validateEmail(email)) {
+        showFieldError('signupEmailError', 'Please enter a valid email address');
+        hasError = true;
+      }
+
+      const passwordCheck = Auth.validatePassword(password);
+      if (!passwordCheck.valid) {
+        showFieldError('signupPasswordError', 'Password must have ' + passwordCheck.errors.join(', '));
+        hasError = true;
+      }
+
+      if (password !== confirmPassword) {
+        showFieldError('signupConfirmPasswordError', 'Passwords do not match');
+        hasError = true;
+      }
+
+      if (!agreeTerms) {
+        showMessage('error', 'Please agree to the Terms of Service and Privacy Policy');
+        hasError = true;
+      }
+
+      if (hasError) return;
+
+      setLoading('signupSubmitBtn', true);
+      const result = await Auth.signupWithEmail(name, email, password);
+      setLoading('signupSubmitBtn', false);
+
+      if (result.success) {
+        showMessage('success', result.message);
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 2000);
+      } else {
+        showMessage('error', result.message);
+      }
+    }
+
+    // ─── Handle Google Signup ───────────────────
+    async function handleGoogleSignup() {
+      setLoading('googleSignupBtn', true);
+      const result = await Auth.loginWithGoogle();
+      setLoading('googleSignupBtn', false);
+
+      if (result.success) {
+        showMessage('success', 'Account created! Redirecting...');
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 800);
+      } else {
+        showMessage('error', result.message);
+      }
+    }
+
+    // ─── Password Strength Meter ────────────────
+    function updatePasswordStrength() {
+      const password = document.getElementById('signupPassword').value;
+      const container = document.getElementById('passwordStrengthContainer');
+      const fill = document.getElementById('passwordStrengthFill');
+      const text = document.getElementById('passwordStrengthText');
+
+      if (password.length === 0) {
+        container.style.display = 'none';
+        return;
+      }
+
+      container.style.display = 'block';
+      const strength = Auth.getPasswordStrength(password);
+      fill.style.width = strength.width;
+      fill.style.backgroundColor = strength.color;
+      text.textContent = strength.level.charAt(0).toUpperCase() + strength.level.slice(1);
+      text.style.color = strength.color;
+    }
+
+    // ─── UI Helpers ─────────────────────────────
+    function showMessage(type, text) {
+      const msg = document.getElementById('authMessage');
+      const icon = document.getElementById('authMessageIcon');
+      const txtEl = document.getElementById('authMessageText');
+      msg.className = `auth-message show ${type}`;
+      icon.innerHTML = type === 'error' ? '<i class="lni lni-warning"></i>' :
+                       type === 'success' ? '<i class="lni lni-checkmark-circle"></i>' :
+                       '<i class="lni lni-information"></i>';
+      txtEl.textContent = text;
+    }
+
+    function showFieldError(id, text) {
+      const el = document.getElementById(id);
+      el.textContent = text;
+      el.classList.add('show');
+    }
+
+    function clearErrors() {
+      document.querySelectorAll('.field-error').forEach(el => {
+        el.classList.remove('show');
+        el.textContent = '';
+      });
+      document.getElementById('authMessage').className = 'auth-message';
+    }
+
+    function setLoading(btnId, loading) {
+      const btn = document.getElementById(btnId);
+      if (loading) {
+        btn.classList.add('loading');
+        btn.disabled = true;
+      } else {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+      } else {
+        input.type = 'password';
+      }
+    }
+  </script>
+</body>
+
+</html>

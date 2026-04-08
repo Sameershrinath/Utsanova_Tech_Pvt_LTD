@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Utsanova Tech</title>
+  <meta name="description" content="Sign in to your Utsanova Tech account to access your dashboard and manage your projects." />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+  <meta name="theme-color" content="#3d63dd" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./assets/css/auth.css" />
+</head>
+
+<body>
+  <div class="auth-bg">
+    <!-- Floating orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px;">
+      <div class="auth-card">
+        <!-- Logo -->
+        <a href="index.html">
+          <img src="./assets/img/utsanova_mono.svg" alt="Utsanova" class="auth-logo" />
+        </a>
+
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to your account to continue</p>
+
+        <!-- Error / Success Message -->
+        <div id="authMessage" class="auth-message" role="alert">
+          <span id="authMessageIcon"></span>
+          <span id="authMessageText"></span>
+        </div>
+
+        <!-- Google Sign-In Button -->
+        <button type="button" id="googleLoginBtn" class="auth-btn auth-btn-google" onclick="handleGoogleLogin()">
+          <svg viewBox="0 0 48 48">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+          <span class="btn-text">Continue with Google</span>
+          <span class="auth-spinner"></span>
+        </button>
+
+        <div class="auth-divider">
+          <span>or sign in with email</span>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <div class="auth-form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" placeholder="you@example.com" required autocomplete="email" />
+            <div id="loginEmailError" class="field-error"></div>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="loginPassword">Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="loginPassword" placeholder="Enter your password" required autocomplete="current-password" />
+              <button type="button" class="password-toggle" onclick="togglePasswordVisibility('loginPassword', this)" aria-label="Toggle password visibility">
+                <i class="lni lni-eye"></i>
+              </button>
+            </div>
+            <div id="loginPasswordError" class="field-error"></div>
+          </div>
+
+          <div class="auth-forgot-link">
+            <a href="forgot-password.html" class="auth-link">Forgot password?</a>
+          </div>
+
+          <button type="submit" id="loginSubmitBtn" class="auth-btn auth-btn-primary">
+            <span class="btn-text">Sign In</span>
+            <span class="auth-spinner"></span>
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          Don't have an account? <a href="signup.html">Create one</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK (Compat for CDN usage) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <!-- Firebase Config & Auth Module -->
+  <script src="./assets/js/firebase-config.js"></script>
+  <script src="./assets/js/auth.js"></script>
+
+  <script>
+    // Redirect if already logged in
+    Auth.redirectIfLoggedIn();
+
+    // ─── Handle Email Login ─────────────────────
+    async function handleLogin(e) {
+      e.preventDefault();
+      clearErrors();
+
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      // Validate
+      if (!Auth.validateEmail(email)) {
+        showFieldError('loginEmailError', 'Please enter a valid email address');
+        return;
+      }
+
+      if (!password) {
+        showFieldError('loginPasswordError', 'Password is required');
+        return;
+      }
+
+      setLoading('loginSubmitBtn', true);
+      const result = await Auth.loginWithEmail(email, password);
+      setLoading('loginSubmitBtn', false);
+
+      if (result.success) {
+        showMessage('success', 'Login successful! Redirecting...');
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 800);
+      } else {
+        showMessage('error', result.message);
+      }
+    }
+
+    // ─── Handle Google Login ────────────────────
+    async function handleGoogleLogin() {
+      setLoading('googleLoginBtn', true);
+      const result = await Auth.loginWithGoogle();
+      setLoading('googleLoginBtn', false);
+
+      if (result.success) {
+        showMessage('success', 'Login successful! Redirecting...');
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 800);
+      } else {
+        showMessage('error', result.message);
+      }
+    }
+
+    // ─── UI Helpers ─────────────────────────────
+    function showMessage(type, text) {
+      const msg = document.getElementById('authMessage');
+      const icon = document.getElementById('authMessageIcon');
+      const txtEl = document.getElementById('authMessageText');
+      msg.className = `auth-message show ${type}`;
+      icon.innerHTML = type === 'error' ? '<i class="lni lni-warning"></i>' :
+                       type === 'success' ? '<i class="lni lni-checkmark-circle"></i>' :
+                       '<i class="lni lni-information"></i>';
+      txtEl.textContent = text;
+    }
+
+    function showFieldError(id, text) {
+      const el = document.getElementById(id);
+      el.textContent = text;
+      el.classList.add('show');
+    }
+
+    function clearErrors() {
+      document.querySelectorAll('.field-error').forEach(el => {
+        el.classList.remove('show');
+        el.textContent = '';
+      });
+      document.getElementById('authMessage').className = 'auth-message';
+    }
+
+    function setLoading(btnId, loading) {
+      const btn = document.getElementById(btnId);
+      if (loading) {
+        btn.classList.add('loading');
+        btn.disabled = true;
+      } else {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'lni lni-eye';
+      } else {
+        input.type = 'password';
+        icon.className = 'lni lni-eye';
+      }
+    }
+  </script>
+</body>
+
+</html>

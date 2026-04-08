@@ -270,37 +270,68 @@ if (st) {
   });
 }
 
-// Auto-hover middle logo in marquee
-var customMarqueeContainer = document.querySelector(".logo-marquee-container");
-if (customMarqueeContainer) {
-  var marqueeLogos = customMarqueeContainer.querySelectorAll("img");
+// // Auto-hover middle logo in marquee
+// var customMarqueeContainer = document.querySelector(".logo-marquee-container");
+// if (customMarqueeContainer) {
+//   var marqueeLogos = customMarqueeContainer.querySelectorAll("img");
   
-  function updateMiddleLogo() {
-    var containerRect = customMarqueeContainer.getBoundingClientRect();
-    var containerCenter = containerRect.left + containerRect.width / 2;
+//   function updateMiddleLogo() {
+//     var containerRect = customMarqueeContainer.getBoundingClientRect();
+//     var containerCenter = containerRect.left + containerRect.width / 2;
     
-    var closestLogo = null;
-    var minDistance = Infinity;
+//     var closestLogo = null;
+//     var minDistance = Infinity;
     
-    marqueeLogos.forEach(function(logo) {
-      logo.classList.remove('active-middle');
+//     marqueeLogos.forEach(function(logo) {
+//       logo.classList.remove('active-middle');
       
-      var rect = logo.getBoundingClientRect();
-      var logoCenter = rect.left + rect.width / 2;
-      var distance = Math.abs(containerCenter - logoCenter);
+//       var rect = logo.getBoundingClientRect();
+//       var logoCenter = rect.left + rect.width / 2;
+//       var distance = Math.abs(containerCenter - logoCenter);
       
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestLogo = logo;
-      }
-    });
+//       if (distance < minDistance) {
+//         minDistance = distance;
+//         closestLogo = logo;
+//       }
+//     });
     
-    if (closestLogo && minDistance < 200) { 
-        closestLogo.classList.add('active-middle');
+//     if (closestLogo && minDistance < 200) { 
+//         closestLogo.classList.add('active-middle');
+//     }
+    
+//     requestAnimationFrame(updateMiddleLogo);
+//   }
+  
+//   requestAnimationFrame(updateMiddleLogo);
+// }
+const logos = document.querySelectorAll(".logo-track img");
+
+function highlightCenterLogo() {
+  const center = window.innerWidth / 2;
+
+  let closestLogo = null;
+  let closestDistance = Infinity;
+
+  logos.forEach((logo) => {
+    const rect = logo.getBoundingClientRect();
+    const logoCenter = rect.left + rect.width / 2;
+
+    const distance = Math.abs(center - logoCenter);
+
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestLogo = logo;
     }
-    
-    requestAnimationFrame(updateMiddleLogo);
+  });
+
+  // Remove previous active
+  logos.forEach((logo) => logo.classList.remove("active-middle"));
+
+  // Add to closest
+  if (closestLogo) {
+    closestLogo.classList.add("active-middle");
   }
-  
-  requestAnimationFrame(updateMiddleLogo);
 }
+
+// Run continuously
+setInterval(highlightCenterLogo, 100);

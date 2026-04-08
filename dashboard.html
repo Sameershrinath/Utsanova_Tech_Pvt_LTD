@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Utsanova Tech</title>
+  <meta name="description" content="Your Utsanova Tech dashboard. Manage your account and projects." />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+  <meta name="theme-color" content="#3d63dd" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./assets/css/auth.css" />
+
+  <style>
+    /* Dashboard-specific layout styles */
+    .dash-nav {
+      padding: 16px 0;
+      position: relative;
+      z-index: 50;
+    }
+    .dash-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dash-nav-logo {
+      height: 32px;
+      filter: brightness(0) invert(1);
+    }
+    .dash-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .dash-nav-home {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .dash-nav-home:hover { color: #fff; }
+    .dash-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+      position: relative;
+      z-index: 10;
+    }
+    .dash-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .dash-profile-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .dash-profile-info {
+      flex: 1;
+      min-width: 200px;
+    }
+    .dash-greeting {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+    .dash-email {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    .dash-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .quick-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .quick-link:hover {
+      color: #fff;
+    }
+    .quick-link-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(61, 99, 221, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #94b5ff;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+    .quick-link:hover .quick-link-icon {
+      background: rgba(61, 99, 221, 0.35);
+      transform: scale(1.05);
+    }
+    .quick-link-text h4 {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .quick-link-text p {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.82rem;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+    }
+    .info-value {
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    /* Loading state */
+    .dash-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+    }
+    .dash-loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255,255,255,0.15);
+      border-top-color: #94b5ff;
+      border-radius: 50%;
+      animation: authSpin 0.8s linear infinite;
+    }
+    @media (max-width: 640px) {
+      .dash-greeting { font-size: 1.5rem; }
+      .dash-profile-header { gap: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-bg" style="min-height: 100vh;">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Loading State -->
+    <div id="dashLoading" class="dash-loading">
+      <div class="dash-loading-spinner"></div>
+    </div>
+
+    <!-- Dashboard Content (hidden until auth) -->
+    <div id="dashContent" style="display: none;">
+
+      <!-- Navigation -->
+      <nav class="dash-nav">
+        <div class="dash-nav-inner">
+          <a href="index.html">
+            <img src="./assets/img/utsanova_mono.svg" alt="Utsanova" class="dash-nav-logo" />
+          </a>
+          <div class="dash-nav-right">
+            <a href="index.html" class="dash-nav-home">
+              <i class="lni lni-home"></i> Home
+            </a>
+            <button type="button" class="btn-logout" onclick="handleLogout()" id="logoutBtn">
+              <i class="lni lni-exit"></i> Logout
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="dash-container">
+
+        <!-- Profile Header -->
+        <div class="dashboard-greeting dashboard-card" style="margin-bottom: 24px;">
+          <div class="dash-profile-header">
+            <div id="userAvatarContainer">
+              <!-- Avatar injected by JS -->
+            </div>
+            <div class="dash-profile-info">
+              <h1 class="dash-greeting" id="greetingText">Hi there!</h1>
+              <p class="dash-email" id="userEmail">Loading...</p>
+              <div class="dash-actions">
+                <span id="verificationBadge" class="verified-badge"></span>
+                <button type="button" onclick="openEditProfile()" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); padding: 8px 16px; border-radius: 10px; font-size: 0.85rem; cursor: pointer; transition: all 0.3s;">
+                  <i class="lni lni-pencil-alt"></i> Edit Profile
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="dash-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="memberSince">—</div>
+            <div class="stat-label">Member Since</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="loginProvider">—</div>
+            <div class="stat-label">Sign-in Method</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="lastLogin">—</div>
+            <div class="stat-label">Last Login</div>
+          </div>
+        </div>
+
+        <!-- Two-column layout -->
+        <div class="dash-grid" style="margin-top: 24px;">
+
+          <!-- Account Details -->
+          <div class="dashboard-card">
+            <div class="section-label">Account Details</div>
+            <div class="info-row">
+              <span class="info-label">Full Name</span>
+              <span class="info-value" id="infoName">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Email</span>
+              <span class="info-value" id="infoEmail">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">User ID</span>
+              <span class="info-value" id="infoUid" style="font-size: 0.75rem; font-family: monospace; color: rgba(255,255,255,0.4);">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Email Verified</span>
+              <span class="info-value" id="infoVerified">—</span>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="dashboard-card" style="padding: 24px 0;">
+            <div class="section-label" style="padding: 0 24px;">Quick Links</div>
+            <a href="index.html" class="quick-link">
+              <div class="quick-link-icon"><i class="lni lni-home"></i></div>
+              <div class="quick-link-text">
+                <h4>Homepage</h4>
+                <p>Go back to the main website</p>
+              </div>
+            </a>
+            <a href="index.html#services" class="quick-link">
+              <div class="quick-link-icon"><i class="lni lni-cog"></i></div>
+              <div class="quick-link-text">
+                <h4>Our Services</h4>
+                <p>Explore what we offer</p>
+              </div>
+            </a>
+            <a href="index.html#contact" class="quick-link">
+              <div class="quick-link-icon"><i class="lni lni-envelope"></i></div>
+              <div class="quick-link-text">
+                <h4>Contact Us</h4>
+                <p>Get in touch with our team</p>
+              </div>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="dashboard-card" style="margin-top: 24px; border-color: rgba(239, 68, 68, 0.15);">
+          <div class="section-label" style="color: rgba(239, 68, 68, 0.6);">Session</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <div>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin: 0;">End your current session and sign out of your account.</p>
+            </div>
+            <button type="button" class="btn-logout" onclick="handleLogout()">
+              <i class="lni lni-exit"></i> Sign Out
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
+      <div class="modal-content">
+        <h3 style="color: #fff; margin-bottom: 6px; font-size: 1.25rem;">Edit Profile</h3>
+        <p style="color: rgba(255,255,255,0.5); font-size: 0.875rem; margin-bottom: 24px;">Update your display name</p>
+
+        <div id="editMessage" class="auth-message" role="alert">
+          <span id="editMessageIcon"></span>
+          <span id="editMessageText"></span>
+        </div>
+
+        <form onsubmit="handleUpdateProfile(event)">
+          <div class="auth-form-group">
+            <label for="editName">Display Name</label>
+            <input type="text" id="editName" placeholder="Your name" required />
+          </div>
+
+          <div style="display: flex; gap: 12px; justify-content: flex-end;">
+            <button type="button" onclick="closeEditProfile()" style="padding: 10px 20px; border-radius: 10px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.12); cursor: pointer; font-size: 0.9rem;">
+              Cancel
+            </button>
+            <button type="submit" id="editSubmitBtn" class="auth-btn auth-btn-primary" style="width: auto; padding: 10px 24px;">
+              <span class="btn-text">Save Changes</span>
+              <span class="auth-spinner"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script src="./assets/js/firebase-config.js"></script>
+  <script src="./assets/js/auth.js"></script>
+
+  <script>
+    // ─── Route Protection ───────────────────────
+    Auth.requireAuth().then(async (user) => {
+      await populateDashboard(user);
+      document.getElementById('dashLoading').style.display = 'none';
+      document.getElementById('dashContent').style.display = 'block';
+    });
+
+    // ─── Populate Dashboard ─────────────────────
+    async function populateDashboard(user) {
+      // Greeting with time-aware message
+      const hour = new Date().getHours();
+      let timeGreeting = 'Hi';
+      if (hour < 12) timeGreeting = 'Good Morning';
+      else if (hour < 17) timeGreeting = 'Good Afternoon';
+      else timeGreeting = 'Good Evening';
+
+      // Get display name: Firebase Auth first, then Firestore fallback
+      let displayName = user.displayName;
+      if (!displayName) {
+        const userData = await Auth.getUserData(user.uid);
+        displayName = userData?.displayName || user.email.split('@')[0];
+      }
+      const firstName = displayName.split(' ')[0];
+
+      document.getElementById('greetingText').textContent = `${timeGreeting}, ${firstName}! 👋`;
+      document.getElementById('userEmail').textContent = user.email;
+
+      // Avatar
+      const avatarContainer = document.getElementById('userAvatarContainer');
+      if (user.photoURL) {
+        avatarContainer.innerHTML = `<img src="${user.photoURL}" alt="Profile" class="user-avatar" referrerpolicy="no-referrer" />`;
+      } else {
+        const initials = displayName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+        avatarContainer.innerHTML = `<div class="user-avatar-placeholder">${initials}</div>`;
+      }
+
+      // Verification badge
+      const badge = document.getElementById('verificationBadge');
+      if (user.emailVerified) {
+        badge.className = 'verified-badge verified';
+        badge.innerHTML = '<i class="lni lni-checkmark-circle"></i> Verified';
+      } else {
+        badge.className = 'verified-badge unverified';
+        badge.innerHTML = '<i class="lni lni-warning"></i> Unverified — Click to verify';
+        badge.onclick = async () => {
+          const result = await Auth.resendVerificationEmail();
+          if (result.success) {
+            badge.innerHTML = '<i class="lni lni-checkmark-circle"></i> Verification email sent!';
+          }
+        };
+      }
+
+      // Account details
+      document.getElementById('infoName').textContent = displayName;
+      document.getElementById('infoEmail').textContent = user.email;
+      document.getElementById('infoUid').textContent = user.uid;
+      document.getElementById('infoVerified').textContent = user.emailVerified ? 'Yes ✓' : 'No';
+
+      // Stats
+      const providerData = user.providerData[0];
+      const providerMap = {
+        'google.com': '🔵 Google',
+        'password': '🔒 Email',
+        'github.com': '⚫ GitHub'
+      };
+      document.getElementById('loginProvider').textContent = providerMap[providerData?.providerId] || providerData?.providerId || 'Unknown';
+
+      // Member since
+      const creationTime = user.metadata.creationTime;
+      if (creationTime) {
+        const date = new Date(creationTime);
+        const month = date.toLocaleString('default', { month: 'short' });
+        const year = date.getFullYear();
+        document.getElementById('memberSince').textContent = `${month} ${year}`;
+      }
+
+      // Last login
+      const lastSign = user.metadata.lastSignInTime;
+      if (lastSign) {
+        const date = new Date(lastSign);
+        const now = new Date();
+        const diff = now - date;
+        const minutes = Math.floor(diff / 60000);
+        const hours = Math.floor(diff / 3600000);
+        const days = Math.floor(diff / 86400000);
+
+        let timeAgo;
+        if (minutes < 1) timeAgo = 'Just Now';
+        else if (minutes < 60) timeAgo = `${minutes}m ago`;
+        else if (hours < 24) timeAgo = `${hours}h ago`;
+        else timeAgo = `${days}d ago`;
+
+        document.getElementById('lastLogin').textContent = timeAgo;
+      }
+    }
+
+    // ─── Logout ─────────────────────────────────
+    async function handleLogout() {
+      document.getElementById('logoutBtn').disabled = true;
+      await Auth.logout();
+    }
+
+    // ─── Edit Profile Modal ─────────────────────
+    function openEditProfile() {
+      const user = Auth.getCurrentUser();
+      if (user) {
+        document.getElementById('editName').value = user.displayName || '';
+      }
+      document.getElementById('editProfileModal').classList.add('show');
+    }
+
+    function closeEditProfile() {
+      document.getElementById('editProfileModal').classList.remove('show');
+      document.getElementById('editMessage').className = 'auth-message';
+    }
+
+    function closeModalOnOverlay(e) {
+      if (e.target === document.getElementById('editProfileModal')) {
+        closeEditProfile();
+      }
+    }
+
+    async function handleUpdateProfile(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('editName').value.trim();
+      if (name.length < 2) {
+        showEditMessage('error', 'Name must be at least 2 characters');
+        return;
+      }
+
+      const btn = document.getElementById('editSubmitBtn');
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      const result = await Auth.updateProfile({ displayName: name });
+
+      btn.classList.remove('loading');
+      btn.disabled = false;
+
+      if (result.success) {
+        showEditMessage('success', result.message);
+        // Refresh dashboard
+        const user = Auth.getCurrentUser();
+        await user.reload();
+        await populateDashboard(Auth.getCurrentUser());
+
+        setTimeout(() => closeEditProfile(), 1200);
+      } else {
+        showEditMessage('error', result.message);
+      }
+    }
+
+    function showEditMessage(type, text) {
+      const msg = document.getElementById('editMessage');
+      const icon = document.getElementById('editMessageIcon');
+      const txtEl = document.getElementById('editMessageText');
+      msg.className = `auth-message show ${type}`;
+      icon.innerHTML = type === 'error' ? '<i class="lni lni-warning"></i>' : '<i class="lni lni-checkmark-circle"></i>';
+      txtEl.textContent = text;
+    }
+  </script>
+</body>
+
+</html>
