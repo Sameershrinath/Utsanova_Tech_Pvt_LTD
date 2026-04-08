@@ -222,6 +222,9 @@
   .ic-navbar.sticky [data-web-trigger="web-theme"] {
     @apply text-body-light-12 dark:text-body-dark-12;
   }
+  .ic-navbar.sticky #navUserGreeting {
+    @apply text-body-light-12 dark:text-body-dark-12;
+  }
   .ic-navbar.sticky .btn-navbar {
     @apply bg-primary hover:bg-primary-light-10 dark:hover:bg-primary-dark-10 hover:text-primary-color;
   }

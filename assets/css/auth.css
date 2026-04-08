@@ -6,7 +6,8 @@
 /* ─── Animated Background ─────────────────────── */
 .auth-bg {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1d2e5c 0%, #3d63dd 50%, #233157 100%);
+  /* background: linear-gradient(135deg, #1d2e5c 0%, #3d63dd 50%, #233157 100%); */
+  background-color: rgb(22 35 75 / var(--tw-bg-opacity, 1));
   position: relative;
   overflow: hidden;
 }
