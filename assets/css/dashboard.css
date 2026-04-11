@@ -12,6 +12,7 @@
     padding: 16px 0;
     position: relative;
     z-index: 50;
+    
 }
 .dash-nav-inner {
     max-width: 1200px;
@@ -22,7 +23,7 @@
     justify-content: space-between;
 }
 .dash-nav-logo {
-    height: 32px;
+    height: 60px;
     filter: brightness(0) invert(1);
 }
 .dash-nav-right {
@@ -160,4 +161,4 @@
 @media (max-width: 640px) {
     .dash-greeting { font-size: 1.5rem; }
     .dash-profile-header { gap: 16px; }
-}
+}   
