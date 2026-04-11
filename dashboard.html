@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
 
   <!-- Styles -->
+  <link rel="stylesheet" href="./assets/css/main.css" />
   <link rel="stylesheet" href="./assets/css/auth.css" />
   <link rel="stylesheet" href="./assets/css/dashboard.css">
 </head>
@@ -37,21 +38,95 @@
     <div id="dashContent" style="display: none;">
 
       <!-- Navigation -->
-      <nav class="dash-nav">
-        <div class="dash-nav-inner">
-          <a href="index.html">
-            <img src="./assets/img/utsanova.svg" alt="Utsanova" class="dash-nav-logo" />
-          </a>
-          <div class="dash-nav-right">
-            <a href="index.html" class="dash-nav-home">
-              <i class="lni lni-home"></i> Home
-            </a>
-            <button type="button" class="btn-logout" onclick="handleLogout()" id="logoutBtn">
-              <i class="lni lni-exit"></i> Logout
-            </button>
+      <header class="ic-navbar absolute left-0 top-0 z-40 flex w-full items-center bg-transparent" role="banner"
+        aria-label="Navigation bar">
+        <div class="container">
+          <div class="ic-navbar-container relative -mx-5 flex items-center justify-between">
+            <div class="w-60 lg:w-56 max-w-full px-5">
+              <a href="index.html#home" class="ic-navbar-logo block w-full py-5 text-primary-color">
+                <img class="w-50" src="./assets/img/utsanova_mono.svg" alt="Utsanova">
+              </a>
+            </div>
+            <div class="flex w-full items-center justify-between px-5">
+              <div>
+                <button type="button"
+                  class="ic-navbar-toggler absolute right-4 top-1/2 block -translate-y-1/2 rounded-md px-3 py-[6px] text-[22px]/none text-primary-color ring-primary focus:ring-2 lg:hidden"
+                  data-web-toggle="navbar-collapse" data-web-target="navbarMenu" aria-expanded="false"
+                  aria-label="Toggle navigation menu">
+                  <i class="lni lni-menu"></i>
+                </button>
+
+                <nav id="navbarMenu"
+                  class="ic-navbar-collapse absolute right-4 top-[80px] w-full max-w-[250px] rounded-lg hidden bg-primary-light-1 py-5 shadow-lg dark:bg-primary-dark-1 lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:shadow-none dark:lg:bg-transparent xl:px-6">
+                  <ul class="block lg:flex" role="menu" aria-label="Navigation menu">
+                    <li class="group relative">
+                      <a href="index.html#home"
+                        class="mx-8 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12 lg:mx-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-primary-color lg:dark:text-primary-color lg:group-hover:text-primary-color lg:group-hover:opacity-70"
+                        role="menuitem">Home</a>
+                    </li>
+
+                    <li class="group relative">
+                      <a href="index.html#services"
+                        class="mx-8 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-primary-color lg:dark:text-primary-color lg:group-hover:text-primary-color lg:group-hover:opacity-70"
+                        role="menuitem">Services</a>
+                    </li>
+
+                    <li class="group relative">
+                      <a href="index.html#portfolio"
+                        class="mx-8 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-primary-color lg:dark:text-primary-color lg:group-hover:text-primary-color lg:group-hover:opacity-70"
+                        role="menuitem">Portfolio</a>
+                    </li>
+
+                    <li class="group relative">
+                      <a href="index.html#contact"
+                        class="mx-8 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-primary-color lg:dark:text-primary-color lg:group-hover:text-primary-color lg:group-hover:opacity-70"
+                        role="menuitem">Contact</a>
+                    </li>
+
+                   
+                  </ul>
+                </nav>
+              </div>
+              <div class="flex items-center justify-end pr-[52px] lg:pr-0">
+                <button type="button" class="inline-flex items-center text-primary-color text-[24px]/none"
+                  aria-label="Switch theme" data-web-trigger="web-theme"></button>
+                <div class="hidden sm:flex items-center" id="navAuthButtons">
+                  <div id="navLoggedOut" class="flex items-center gap-3">
+                    <a href="index.html#home"
+                      class="btn-navbar ml-5 px-5 py-2.5 rounded-md bg-transparent text-base font-medium text-primary-color hover:bg-primary-color/10"
+                      role="button">Home</a>
+                    <a href="index.html#contact"
+                      class="btn-navbar px-5 py-2.5 rounded-md bg-primary-color bg-opacity-20 text-base font-medium text-primary-color hover:bg-opacity-100 hover:text-primary"
+                      role="button">Get in Touch</a>
+                  </div>
+                  <div id="navLoggedIn" class="nav-user-menu ml-5" style="display: none;">
+                    <button type="button" onclick="toggleUserDropdown()" id="navAvatarBtn" class="flex items-center gap-2 text-primary-color" aria-label="User menu">
+                      <span id="navUserGreeting" class="text-sm font-medium text-primary-color hidden lg:inline"></span>
+                      <div id="navAvatarEl"></div>
+                    </button>
+                    <div id="navUserDropdown" class="nav-user-dropdown">
+                      <div style="padding: 12px 14px; border-bottom: 1px solid rgba(0,0,0,0.06);">
+                        <div style="font-weight: 600; font-size: 0.9rem;" id="dropdownName"></div>
+                        <div style="font-size: 0.8rem; opacity: 0.6;" id="dropdownEmail"></div>
+                      </div>
+                      <a href="index.html#home" class="nav-user-dropdown-item" style="margin-top: 4px;">
+                        <i class="lni lni-home"></i> Home
+                      </a>
+                      <a href="javascript:void(0)" class="nav-user-dropdown-item" onclick="openEditProfile()">
+                        <i class="lni lni-pencil-alt"></i> Edit Profile
+                      </a>
+                      <div class="nav-user-dropdown-divider"></div>
+                      <a href="javascript:void(0)" class="nav-user-dropdown-item" onclick="handleNavLogout()" style="color: #ef4444;">
+                        <i class="lni lni-exit" style="color: #ef4444;"></i> Sign Out
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
+      </header>
 
       <!-- Main Content -->
       <div class="dash-container">
@@ -76,7 +151,7 @@
         </div>
 
         <!-- Stats Row -->
-        <div class="dash-grid">
+        <div class="dash-stats-row">
           <div class="stat-card">
             <div class="stat-value" id="memberSince">—</div>
             <div class="stat-label">Member Since</div>
@@ -106,41 +181,12 @@
               <span class="info-value" id="infoEmail">—</span>
             </div>
             <div class="info-row">
-              <span class="info-label">User ID</span>
-              <span class="info-value" id="infoUid" style="font-size: 0.75rem; font-family: monospace; color: rgba(255,255,255,0.4);">—</span>
-            </div>
-            <div class="info-row">
               <span class="info-label">Email Verified</span>
               <span class="info-value" id="infoVerified">—</span>
             </div>
           </div>
 
-          <!-- Quick Links -->
-          <div class="dashboard-card" style="padding: 24px 0;">
-            <div class="section-label" style="padding: 0 24px;">Quick Links</div>
-            <a href="index.html" class="quick-link">
-              <div class="quick-link-icon"><i class="lni lni-home"></i></div>
-              <div class="quick-link-text">
-                <h4>Homepage</h4>
-                <p>Go back to the main website</p>
-              </div>
-            </a>
-            <a href="index.html#services" class="quick-link">
-              <div class="quick-link-icon"><i class="lni lni-cog"></i></div>
-              <div class="quick-link-text">
-                <h4>Our Services</h4>
-                <p>Explore what we offer</p>
-              </div>
-            </a>
-            <a href="index.html#contact" class="quick-link">
-              <div class="quick-link-icon"><i class="lni lni-envelope"></i></div>
-              <div class="quick-link-text">
-                <h4>Contact Us</h4>
-                <p>Get in touch with our team</p>
-              </div>
-            </a>
-          </div>
-
+       
         </div>
 
         <!-- Danger Zone -->
@@ -198,6 +244,54 @@
 
   <script src="./assets/js/firebase-config.js"></script>
   <script src="./assets/js/auth.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <!-- Auth State Integration for Navbar -->
+  <script>
+    Auth.onAuthStateChanged((user) => {
+      const loggedOut = document.getElementById('navLoggedOut');
+      const loggedIn = document.getElementById('navLoggedIn');
+
+      if (user) {
+        loggedOut.style.display = 'none';
+        loggedIn.style.display = 'inline-flex';
+
+        const firstName = (user.displayName || 'User').split(' ')[0];
+        document.getElementById('navUserGreeting').textContent = `Hi, ${firstName}`;
+
+        const avatarEl = document.getElementById('navAvatarEl');
+        if (user.photoURL) {
+          avatarEl.innerHTML = `<img src="${user.photoURL}" class="nav-user-avatar" referrerpolicy="no-referrer" alt="Profile" />`;
+        } else {
+          const initials = (user.displayName || 'U').split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+          avatarEl.innerHTML = `<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3d63dd,#5a7ef5);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:#fff;border:2px solid rgba(255,255,255,0.3);cursor:pointer;">${initials}</div>`;
+        }
+
+        document.getElementById('dropdownName').textContent = user.displayName || 'User';
+        document.getElementById('dropdownEmail').textContent = user.email;
+      } else {
+        loggedOut.style.display = 'flex';
+        loggedIn.style.display = 'none';
+      }
+    });
+
+    function toggleUserDropdown() {
+      const dd = document.getElementById('navUserDropdown');
+      dd.classList.toggle('show');
+    }
+
+    document.addEventListener('click', (e) => {
+      const dd = document.getElementById('navUserDropdown');
+      const btn = document.getElementById('navAvatarBtn');
+      if (dd && btn && !btn.contains(e.target) && !dd.contains(e.target)) {
+        dd.classList.remove('show');
+      }
+    });
+
+    async function handleNavLogout() {
+      await Auth.logout();
+    }
+  </script>
 
   <script>
     // ─── Route Protection ───────────────────────
@@ -255,15 +349,14 @@
       // Account details
       document.getElementById('infoName').textContent = displayName;
       document.getElementById('infoEmail').textContent = user.email;
-      document.getElementById('infoUid').textContent = user.uid;
       document.getElementById('infoVerified').textContent = user.emailVerified ? 'Yes ✓' : 'No';
 
       // Stats
       const providerData = user.providerData[0];
       const providerMap = {
-        'google.com': '🔵 Google',
-        'password': '🔒 Email',
-        'github.com': '⚫ GitHub'
+        'google.com': 'Google',
+        'password': 'Email',
+        'github.com': 'GitHub'
       };
       document.getElementById('loginProvider').textContent = providerMap[providerData?.providerId] || providerData?.providerId || 'Unknown';
 

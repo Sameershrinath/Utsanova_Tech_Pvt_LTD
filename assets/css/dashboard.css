@@ -1,164 +1,192 @@
 /* Dashboard-specific layout styles */
 .dash-bg {
-  min-height: 100vh;
-  /* background: linear-gradient(135deg, #1d2e5c 0%, #3d63dd 50%, #233157 100%); */
-  background-color: rgb(67, 40, 40);
-  position: relative;
-  overflow: hidden;
-  
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, rgba(61, 99, 221, 0.22), transparent 36%),
+        radial-gradient(circle at 85% 12%, rgba(148, 181, 255, 0.16), transparent 32%),
+        linear-gradient(180deg, #0f1731 0%, #111c3b 52%, #0a1229 100%);
 }
 
-.dash-nav {
-    padding: 16px 0;
-    position: relative;
-    z-index: 50;
-    
+.dash-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.18;
+    pointer-events: none;
 }
-.dash-nav-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.dash-nav-logo {
-    height: 60px;
-    filter: brightness(0) invert(1);
-}
-.dash-nav-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-.dash-nav-home {
-    color: rgba(255,255,255,0.6);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s;
-}
-.dash-nav-home:hover { color: #fff; }
+
 .dash-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px 60px;
+    padding: 128px 24px 60px;
     position: relative;
     z-index: 10;
 }
-.dash-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 32px;
+
+.dash-stats-row {
+    display: grid; /* ✅ ADD THIS */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px; /* optional but recommended */
 }
+
 .dash-profile-header {
     display: flex;
     align-items: center;
     gap: 24px;
     flex-wrap: wrap;
 }
+
 .dash-profile-info {
     flex: 1;
     min-width: 200px;
 }
+
 .dash-greeting {
     font-size: 2rem;
     font-weight: 700;
-    color: #080000;
+    color: #ffffff;
     margin-bottom: 4px;
     letter-spacing: -0.02em;
 }
+
 .dash-email {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.64);
     font-size: 0.95rem;
     margin-bottom: 12px;
 }
+
 .dash-actions {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
     align-items: center;
 }
+
 .quick-link {
     display: flex;
     align-items: center;
     gap: 16px;
     padding: 20px 24px;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.82);
     text-decoration: none;
     transition: all 0.3s ease;
 }
+
 .quick-link:hover {
     color: #fff;
+    background: rgba(255, 255, 255, 0.03);
 }
+
 .quick-link-icon {
     width: 48px;
     height: 48px;
     border-radius: 14px;
-    background: rgba(61, 99, 221, 0.2);
+    background: rgba(61, 99, 221, 0.22);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
-    color: #94b5ff;
+    color: #c9d9ff;
     flex-shrink: 0;
     transition: all 0.3s ease;
 }
+
 .quick-link:hover .quick-link-icon {
-    background: rgba(61, 99, 221, 0.35);
+    background: rgba(61, 99, 221, 0.36);
     transform: scale(1.05);
 }
+
 .quick-link-text h4 {
     color: #fff;
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 2px;
 }
+
 .quick-link-text p {
-    color: rgba(255,255,255,0.45);
+    color: rgba(255, 255, 255, 0.5);
     font-size: 0.82rem;
 }
+
 .section-label {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255, 255, 255, 0.42);
     margin-bottom: 16px;
     font-weight: 600;
 }
+
 .info-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
     padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-.info-row:last-child { border-bottom: none; }
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
 .info-label {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.52);
     font-size: 0.875rem;
 }
+
 .info-value {
     color: #fff;
     font-size: 0.9rem;
     font-weight: 500;
+    text-align: right;
 }
-/* Loading state */
+
 .dash-loading {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 60vh;
+    position: relative;
+    z-index: 10;
 }
+
 .dash-loading-spinner {
     width: 40px;
     height: 40px;
-    border: 3px solid rgba(255,255,255,0.15);
-    border-top-color: #94b5ff;
+    border: 3px solid rgba(255, 255, 255, 0.16);
+    border-top-color: #c9d9ff;
     border-radius: 50%;
     animation: authSpin 0.8s linear infinite;
 }
+
 @media (max-width: 640px) {
-    .dash-greeting { font-size: 1.5rem; }
-    .dash-profile-header { gap: 16px; }
-}   
+    .dash-container {
+        padding-top: 112px;
+    }
+
+    .dash-stats-row {
+        grid-template-columns: 1fr;
+    }
+
+    .dash-greeting {
+        font-size: 1.5rem;
+    }
+
+    .dash-profile-header {
+        gap: 16px;
+    }
+
+    .info-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .info-value {
+        text-align: left;
+    }
+}
