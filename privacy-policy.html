@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Privacy Policy for Utsanova Technologies Private Limited." />
+  <title>Privacy Policy | Utsanova</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="./assets/favicon/site.webmanifest.json" />
+
+  <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="./assets/css/other.css" />
+  <link rel="stylesheet" href="./assets/css/auth.css" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .scroll-mt-24 {
+      scroll-margin-top: 150px;
+    }
+
+    .nav-link-active {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border-left: 3px solid #3d63dd;
+    }
+
+    .sticky-toc {
+      position: sticky;
+      top: 140px;
+      height: calc(100vh - 200px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .toc-box {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .toc-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .toc-nav::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .toc-nav::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .toc-nav::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+    }
+
+    .toc-nav::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="ic-navbar absolute left-0 top-0 z-40 flex w-full items-center bg-transparent" role="banner"
+    aria-label="Navigation bar">
+    <div class="container">
+      <div class="ic-navbar-container relative -mx-5 flex items-center justify-between">
+        <div class="w-60 lg:w-56 max-w-full px-5">
+          <a href="index.html" class="ic-navbar-logo block w-full py-5 text-primary-color">
+            <img class="w-50" src="./assets/img/utsanova_mono.svg" alt="Utsanova" />
+          </a>
+        </div>
+        <div class="flex w-full items-center justify-between px-5">
+          <div>
+            <button type="button"
+              class="ic-navbar-toggler absolute right-4 top-1/2 block -translate-y-1/2 rounded-md px-3 py-[6px] text-[22px]/none text-primary-color ring-primary focus:ring-2 lg:hidden"
+              data-web-toggle="navbar-collapse" data-web-target="navbarMenu" aria-expanded="false"
+              aria-label="Toggle navigation menu">
+              <i class="lni lni-menu"></i>
+            </button>
+            
+            <nav id="navbarMenu"
+              class="ic-navbar-collapse absolute right-4 top-[80px] w-full max-w-[250px] rounded-lg hidden bg-primary-light-1 py-5 shadow-lg dark:bg-primary-dark-1 lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:shadow-none dark:lg:bg-transparent xl:px-6">
+              <ul  class="block lg:flex" role="menu" aria-label="Navigation menu">
+                <li class="group relative">
+                  <a href="index.html#home"
+                    class="mx-8 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12 lg:mx-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-primary-color lg:dark:text-primary-color lg:group-hover:text-primary-color lg:group-hover:opacity-70"
+                    role="menuitem">Home</a>
+                </li>
+                <li class="group relative">
+                  <a href="index.html#services"
+                    class="mx-8 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-primary-color lg:dark:text-primary-color lg:group-hover:text-primary-color lg:group-hover:opacity-70"
+                    role="menuitem">Services</a>
+                </li>
+                <li class="group relative">
+                  <a href="index.html#contact"
+                    class="mx-8 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-primary-color lg:dark:text-primary-color lg:group-hover:text-primary-color lg:group-hover:opacity-70"
+                    role="menuitem">Contact</a>
+                </li>
+                
+              </ul>
+            </nav>
+          </div>
+        
+          <div class="flex items-center justify-end pr-[52px] lg:pr-0">
+            <button type="button" class="inline-flex items-center text-primary-color text-[24px]/none"
+              aria-label="Switch theme" data-web-trigger="web-theme"></button>
+            <div class="hidden sm:flex items-center" id="navAuthButtons">
+              <div id="navLoggedOut" class="flex items-center gap-3">
+                <a href="login.html"
+                  class="btn-navbar ml-5 px-5 py-2.5 rounded-md bg-transparent text-base font-medium text-primary-color hover:bg-primary-color/10"
+                  role="button">Sign In</a>
+                <a href="signup.html"
+                  class="btn-navbar px-5 py-2.5 rounded-md bg-primary-color bg-opacity-20 text-base font-medium text-primary-color hover:bg-opacity-100 hover:text-primary"
+                  role="button">Get Started</a>
+              </div>
+              <div id="navLoggedIn" class="nav-user-menu ml-5" style="display: none;">
+                <button type="button" onclick="toggleUserDropdown()" id="navAvatarBtn" class="flex items-center gap-2 text-primary-color" aria-label="User menu">
+                  <span id="navUserGreeting" class="text-sm font-medium text-primary-color hidden lg:inline"></span>
+                  <div id="navAvatarEl"></div>
+                </button>
+                <div id="navUserDropdown" class="nav-user-dropdown">
+                  <div style="padding: 12px 14px; border-bottom: 1px solid rgba(0,0,0,0.06);">
+                    <div style="font-weight: 600; font-size: 0.9rem;" id="dropdownName"></div>
+                    <div style="font-size: 0.8rem; opacity: 0.6;" id="dropdownEmail"></div>
+                  </div>
+                  <a href="dashboard.html" class="nav-user-dropdown-item" style="margin-top: 4px;">
+                    <i class="lni lni-dashboard"></i> Dashboard
+                  </a>
+                  <div class="nav-user-dropdown-divider"></div>
+                  <a href="javascript:void(0)" class="nav-user-dropdown-item" onclick="handleNavLogout()" style="color: #ef4444;">
+                    <i class="lni lni-exit" style="color: #ef4444;"></i> Sign Out
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main relative bg-primary text-primary-color pt-[120px] md:pt-[130px] lg:pt-[150px] pb-16">
+   
+    <section class="section-area !pt-10 !pb-0">
+      <div class="container">
+        <div class="flex gap-6 lg:gap-8">
+          <!-- LEFT SIDEBAR -->
+          <aside class="hidden lg:block w-64 flex-shrink-0 sticky-toc">
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 toc-box">
+              <h3 class="text-white font-bold text-lg mb-4 flex-shrink-0">Table of Contents</h3>
+              <nav class="space-y-2 toc-nav">
+                <a href="#section-1" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">1. Applicability & Scope</a>
+                <a href="#section-2" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">2. Consent & Acceptance</a>
+                <a href="#section-3" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">3. Permissible Age & Minor Data</a>
+                <a href="#section-4" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">4. Information Collected</a>
+                <a href="#section-5" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">5. Methods of Collection</a>
+                <a href="#section-6" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">6. Purpose of Processing</a>
+                <a href="#section-7" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">7. Sharing & Disclosure</a>
+                <a href="#section-8" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">8. Cookies & Tracking</a>
+                <a href="#section-9" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">9. Data Storage</a>
+                <a href="#section-10" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">10. User Rights</a>
+                <a href="#section-11" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">11. Data Security</a>
+                <a href="#section-12" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">12. Third-Party Links</a>
+                <a href="#section-13" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">13. Communications</a>
+                <a href="#section-14" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">14. Account Deletion</a>
+                <a href="#section-15" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">15. Limitation of Liability</a>
+                <a href="#section-16" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">16. Amendments</a>
+                <a href="#section-17" class="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-all">17. Contact Information</a>
+              </nav>
+            </div>
+          </aside>
+
+      <div class="privacy-content">
+          <!-- MAIN CONTENT -->
+          <div class="flex-1 lg:max-w-4xl">
+            <div class="rounded-xl shadow-card-2 p-6 md:p-10 text-white">
+              <div class="mb-8 pb-6 border-b border-white/20">
+                <h2 class="text-4xl md:text-5xl font-bold mb-2">Privacy Policy</h2>
+                <p class="text-lg text-white/70">Utsanova Technologies Private Limited</p>
+                <p class="text-sm text-white/50 mt-2">Last Updated: 08 April 2026</p>
+              </div>
+              
+              <div class="space-y-12">
+                <section id="section-1" class="scroll-mt-24 pb-12 border-b border-white/10">
+                  <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">1. Applicability and Scope</h3>
+              <p class="text-lg text-white">Utsanova Technologies Private Limited ("Utsanova", "Company", "We", "Us", "Our") is committed to safeguarding the privacy of individuals interacting with our platform.</p>
+              <p class="text-lg text-white mt-3">This Privacy Policy governs the collection, processing, storage, and disclosure of personal data of:</p>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Users accessing our website and mobile applications</li>
+                <li>Event participants and attendees</li>
+                <li>Event organizers and vendors</li>
+                <li>Service partners and contractors</li>
+                <li>Employees, interns, and third-party stakeholders</li>
+              </ol>
+              <p class="mt-3 text-lg text-white">This Policy applies to all information collected through:</p>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Our digital platforms (web and mobile applications)</li>
+                <li>Electronic communications (emails, chats, messages)</li>
+                <li>Offline interactions linked to our services</li>
+              </ol>
+            </section>
+
+            <section id="section-2" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">2. Consent and Acceptance</h3>
+              <p class="text-lg text-white">By accessing or using Utsanova's Services:</p>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>You provide free, informed, specific, and unambiguous consent</li>
+                <li>You agree to the collection, use, processing, storage, and disclosure of your information</li>
+                <li>If you do not provide required information, certain services may not be available</li>
+              </ol>
+              <p class="mt-3 text-lg text-white">Continued usage post-policy updates constitutes acceptance.</p>
+            </section>
+<br>
+            <section id="section-3" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">3. Permissible Age and Minor Data</h3>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Services are intended for individuals 18 years or older</li>
+                <li>Minors may use services only under supervision of a parent/legal guardian</li>
+                <li>Where data of minors is provided, the provider confirms lawful authority and consent</li>
+                <li>Data shall be used only for the specified purpose</li>
+                <li>No profiling or marketing targeting minors shall be conducted</li>
+              </ol>
+            </section>
+
+            <section id="section-4" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">4. Categories of Information Collected</h3>
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">4.1 Personal Identifiable Information (PII)</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Full name</li>
+                <li>Mobile number</li>
+                <li>Email address</li>
+                <li>Residential address</li>
+                <li>Date of birth, gender (optional)</li>
+                <li>Profile photo and account details</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">4.2 User Account and Profile Data</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Username, password (encrypted)</li>
+                <li>Preferences, interests, event behavior</li>
+                <li>Saved events, wishlists</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">4.3 User-Generated Content</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Reviews, ratings, feedback</li>
+                <li>Photos, videos, comments</li>
+                <li>Public contributions (visible to other users)</li>
+              </ol>
+              <p class="mt-2 text-lg text-white">Such content may be displayed publicly at user's own risk.</p>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">4.4 Transactional and Booking Information</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Event bookings and ticket details</li>
+                <li>Payment-related information (processed via secure third-party gateways)</li>
+                <li>Billing details and transaction history</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">4.5 Event Participation Data</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Events attended, registered, or viewed</li>
+                <li>Seat preferences, ticket categories</li>
+                <li>Feedback and engagement patterns</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">4.6 Communication Data</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Customer support interactions</li>
+                <li>Emails, chats, feedback forms</li>
+                <li>Participation in surveys, contests, promotions</li>
+              </ol>
+              <p class="mt-2 text-lg text-white">We may record interactions for quality control, dispute resolution, and fraud detection.</p>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">4.7 Device and Technical Information</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>IP address</li>
+                <li>Device ID, operating system</li>
+                <li>Browser type and version</li>
+                <li>App usage data, logs, timestamps</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">4.8 Location Information</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Real-time GPS data (if enabled)</li>
+                <li>Location-based event suggestions</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">4.9 Contact Book Data (Optional)</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Contact names and phone numbers</li>
+                <li>User confirms consent of such third parties before sharing</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">4.10 Images, Videos and CCTV Data</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Event photos/videos for promotional purposes</li>
+                <li>CCTV footage for safety and security</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">4.11 Information from Third Parties</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Social login data (Google, etc.)</li>
+                <li>Partner/vendor data</li>
+                <li>Public sources and analytics providers</li>
+              </ol>
+              <p class="mt-2 text-lg text-white">We may combine such data with internal records.</p>
+            </section>
+
+            <section id="section-5" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">5. Methods of Data Collection</h3>
+              <p class="text-lg text-white">We collect information:</p>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Directly from users (forms, registrations)</li>
+                <li>Automatically via cookies and tracking tools</li>
+                <li>Indirectly through third-party integrations</li>
+              </ol>
+            </section>
+
+            <section id="section-6" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">6. Purpose of Processing Information</h3>
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">6.1 Service Delivery and Operations</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Event booking, ticketing, and management</li>
+                <li>Customer support and grievance handling</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">6.2 Platform Maintenance and Security</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Fraud detection and prevention</li>
+                <li>System monitoring and troubleshooting</li>
+                <li>Enforcement of Terms</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">6.3 Personalization</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Customized event recommendations</li>
+                <li>Tailored content and user experience</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">6.4 Marketing and Promotions</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Emails, SMS, WhatsApp notifications</li>
+                <li>Offers, campaigns, and updates</li>
+              </ol>
+              <p class="mt-2 text-lg text-white">Users may opt-out of marketing communications.</p>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">6.5 Analytics and Research</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>User behavior analysis</li>
+                <li>Performance improvement</li>
+                <li>Product development</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">6.6 Legal Compliance</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Regulatory reporting</li>
+                <li>Compliance with applicable laws</li>
+              </ol>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">6.7 AI and Advanced Processing</h4>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>AI tools for analytics and personalization</li>
+                <li>Automated systems for fraud detection</li>
+              </ol>
+              <p class="mt-2 text-lg text-white">De-identified data may be used without restriction.</p>
+            </section>
+
+            <section id="section-7" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">7. Sharing and Disclosure of Information</h3>
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">7.1 With Event Organizers and Vendors</h4>
+              <p class="text-lg text-white">Necessary data for event execution, booking, and service fulfillment.</p>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">7.2 With Service Providers</h4>
+              <p class="text-lg text-white">Payment gateways (PCI-compliant), hosting providers, analytics, and communication tools.</p>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">7.3 With Affiliates</h4>
+              <p class="text-lg text-white">For operational efficiency and service integration.</p>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">7.4 Legal and Regulatory Authorities</h4>
+              <p class="text-lg text-white">As required by law, court orders, or government requests.</p>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">7.5 Business Transfers</h4>
+              <p class="text-lg text-white">In mergers, acquisitions, or restructuring.</p>
+
+              <h4 class="mt-6 mb-3 text-xl md:text-2xl font-bold text-white/90">7.6 Advertising and Marketing Partners</h4>
+              <p class="text-lg text-white">For targeted advertising (subject to consent).</p>
+            </section>
+
+            <section id="section-8" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">8. Cookies and Tracking Technologies</h3>
+              <p class="text-lg text-white">We use cookies, pixel tags, and device identifiers to:</p>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Store preferences</li>
+                <li>Improve user experience</li>
+                <li>Analyze usage patterns</li>
+              </ol>
+              <p class="mt-3 text-lg text-white">Third-party tools may also use tracking technologies.</p>
+            </section>
+
+            <section id="section-9" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">9. Data Storage and Retention</h3>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Data stored on secure servers (India or global)</li>
+                <li>Retained as long as necessary for business operations, legal compliance, and dispute resolution</li>
+                <li>Backup copies may be retained for risk management</li>
+              </ol>
+            </section>
+
+            <section id="section-10" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">10. User Rights</h3>
+              <p class="text-lg text-white">Subject to applicable laws, users may:</p>
+              <ol class="list-decimal pl-6 space-y-1 text-lg text-white">
+                <li>Access personal data</li>
+                <li>Correct or update information</li>
+                <li>Request deletion</li>
+                <li>Withdraw consent</li>
+              </ol>
+              <p class="mt-3 text-lg text-white">Requests may be limited in certain legal situations.</p>
+            </section>
+
+            <section id="section-11" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">11. Data Security Measures</h3>
+              <p class="text-lg text-white">We implement encryption protocols, secure servers, and access control mechanisms. However, no system guarantees absolute security.</p>
+            </section>
+
+            <section id="section-12" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">12. Third-Party Links and Services</h3>
+              <p class="text-lg text-white">Our platform may contain third-party links. We do not control such platforms and are not responsible for their data practices. Users are advised to review third-party policies.</p>
+            </section>
+
+            <section id="section-13" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">13. Communications and Notifications</h3>
+              <p class="text-lg text-white">Users agree to receive service-related notifications, policy updates, and transactional alerts. Certain communications cannot be opted out.</p>
+            </section>
+
+            <section id="section-14" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">14. Account Deletion and Data Removal</h3>
+              <p class="text-lg text-white">Users may request account deletion. Data may not be recoverable post deletion. Backup data may be retained for compliance.</p>
+            </section>
+
+            <section id="section-15" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">15. Limitation of Liability</h3>
+              <p class="text-lg text-white">Utsanova shall not be liable for unauthorized access beyond control, third-party misuse, or user negligence.</p>
+            </section>
+
+            <section id="section-16" class="scroll-mt-24 pb-12 border-b border-white/10">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">16. Amendments to Policy</h3>
+              <p class="text-lg text-white">We reserve the right to update this Policy. Users are advised to review periodically.</p>
+            </section>
+
+            <section id="section-17" class="scroll-mt-24 pb-12">
+              <h3 class="mb-4 text-3xl font-bold text-white pb-2 border-b-2 border-primary-color/30">17. Contact Information</h3>
+              <p class="text-lg text-white">For privacy-related queries:</p>
+              <p class="mt-2 text-lg text-white"><strong>Email:</strong> admin@utsanova.com</p>
+              <p class="text-lg text-white"><strong>Entity:</strong> Utsanova Technologies Private Limited</p>
+            </section>
+          </div>
+        </div>
+      </div>
+
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="./assets/js/firebase-config.js"></script>
+  <script src="./assets/js/auth.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  <script>
+    Auth.onAuthStateChanged((user) => {
+      const loggedOut = document.getElementById('navLoggedOut');
+      const loggedIn = document.getElementById('navLoggedIn');
+
+      if (user) {
+        loggedOut.style.display = 'none';
+        loggedIn.style.display = 'inline-flex';
+
+        const firstName = (user.displayName || 'User').split(' ')[0];
+        document.getElementById('navUserGreeting').textContent = `Hi, ${firstName}`;
+
+        const avatarEl = document.getElementById('navAvatarEl');
+        if (user.photoURL) {
+          avatarEl.innerHTML = `<img src="${user.photoURL}" class="nav-user-avatar" referrerpolicy="no-referrer" alt="Profile" />`;
+        } else {
+          const initials = (user.displayName || 'U').split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2);
+          avatarEl.innerHTML = `<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3d63dd,#5a7ef5);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:#fff;border:2px solid rgba(255,255,255,0.3);cursor:pointer;">${initials}</div>`;
+        }
+
+        document.getElementById('dropdownName').textContent = user.displayName || 'User';
+        document.getElementById('dropdownEmail').textContent = user.email;
+      } else {
+        loggedOut.style.display = 'flex';
+        loggedIn.style.display = 'none';
+      }
+    });
+
+    function toggleUserDropdown() {
+      const dd = document.getElementById('navUserDropdown');
+      dd.classList.toggle('show');
+    }
+
+    document.addEventListener('click', (e) => {
+      const dd = document.getElementById('navUserDropdown');
+      const btn = document.getElementById('navAvatarBtn');
+      if (dd && btn && !btn.contains(e.target) && !dd.contains(e.target)) {
+        dd.classList.remove('show');
+      }
+    });
+
+    async function handleNavLogout() {
+      await Auth.logout();
+    }
+
+    // Highlight active section in sidebar
+    function highlightActiveSection() {
+      const sections = document.querySelectorAll('section[id^="section-"]');
+      const navLinks = document.querySelectorAll('aside a[href^="#section-"]');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove('nav-link-active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('nav-link-active');
+          }
+        });
+      });
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', highlightActiveSection);
+  </script>
+</body>
+
+</html>
