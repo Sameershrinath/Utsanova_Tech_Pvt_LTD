@@ -106,3 +106,90 @@
 .privacy-content li {
   margin-bottom: 6px;
 }
+
+@media (max-width: 767px) {
+  #team .team-card {
+    padding: 14px 10px 16px;
+    border-radius: 12px;
+  }
+
+  #team .team-avatar {
+    width: 72px !important;
+    height: 72px !important;
+    margin-bottom: 10px;
+  }
+
+  #team .team-name {
+    font-size: 0.9rem;
+    line-height: 1.25;
+  }
+
+  #team .team-role {
+    font-size: 0.72rem;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    min-height: 2.1em;
+  }
+
+  #team .team-card .flex {
+    gap: 10px;
+  }
+
+  #blog .blog-card {
+    padding: 0 2px;
+  }
+
+  #blog .blog-card a.aspect-\[3\/2\] {
+    border-radius: 10px;
+  }
+
+  #blog .blog-meta {
+    margin-top: 8px;
+    font-size: 0.7rem;
+  }
+
+  #blog .blog-title {
+    margin-top: 6px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    line-height: 1.32;
+  }
+
+  #blog .blog-summary {
+    font-size: 0.78rem;
+    line-height: 1.42;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  #portfolio .portfolio {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  #portfolio .portfolio article .pt-4 {
+    padding-top: 10px;
+  }
+
+  #portfolio .portfolio article h4 {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  #portfolio .portfolio article p {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  #portfolio .portfolio article .aspect-\[4\/3\] {
+    border-radius: 10px;
+  }
+}

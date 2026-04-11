@@ -144,6 +144,20 @@
                     role="menuitem">Careers</a>
                 </li>
 
+                <li class="group relative lg:hidden">
+                  <a href="login.html"
+                    class="mx-8 mt-2 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12"
+                    onclick="window.location.href='login.html'; return false;"
+                    role="menuitem">Sign In</a>
+                </li>
+
+                <li class="group relative lg:hidden">
+                  <a href="signup.html"
+                    class="mx-8 flex py-2 text-base font-medium text-primary-color"
+                    onclick="window.location.href='signup.html'; return false;"
+                    role="menuitem">Get Started</a>
+                </li>
+
               </ul>
             </nav>
           </div>
@@ -208,7 +222,7 @@
 
               <ul class="mb-10 flex flex-wrap items-center justify-center gap-4 md:gap-5">
                 <li>
-                  <a href="javascript:void(0)"
+                  <a href="signup.html"
                     class="inline-flex items-center justify-center rounded-md bg-primary-color text-primary px-5 py-3 text-center text-base font-medium shadow-md hover:bg-primary-light-5 md:px-7 md:py-[14px]"
                     role="button">Get Started</a>
                 </li>
@@ -574,7 +588,7 @@
         </nav>
 
         <div class="scroll-revealed portfolio-grid row">
-          <div class="portfolio col-12 sm:col-6 lg:col-4">
+          <div class="portfolio col-6 md:col-4 lg:col-4">
             <article class="group" data-filter="branding">
               <div class="relative overflow-hidden w-full aspect-[4/3] rounded-xl">
                 <img src="./assets/img/portfolio/portfolio-1.png" alt="Graphics Design"
@@ -611,7 +625,7 @@
             </article>
           </div>
 
-          <div class="portfolio col-12 sm:col-6 lg:col-4">
+          <div class="portfolio col-6 md:col-4 lg:col-4">
             <article class="group" data-filter="research">
               <div class="relative overflow-hidden w-full aspect-[4/3] rounded-xl">
                 <img src="./assets/img/portfolio/portfolio-2.png" alt="Web Development"
@@ -646,7 +660,7 @@
             </article>
           </div>
 
-          <div class="portfolio col-12 sm:col-6 lg:col-4">
+          <div class="portfolio col-6 md:col-4 lg:col-4">
             <article class="group" data-filter="marketing">
               <div class="relative overflow-hidden w-full aspect-[4/3] rounded-xl">
                 <img src="./assets/img/portfolio/portfolio-3.png" alt="App Development"
@@ -682,7 +696,7 @@
             </article>
           </div>
 
-          <div class="portfolio col-12 sm:col-6 lg:col-4">
+          <div class="portfolio col-6 md:col-4 lg:col-4">
             <article class="group" data-filter="planning">
               <div class="relative overflow-hidden w-full aspect-[4/3] rounded-xl">
                 <img src="./assets/img/portfolio/portfolio-4.png" alt="Digital Marketing"
@@ -718,7 +732,7 @@
             </article>
           </div>
 
-          <div class="portfolio col-12 sm:col-6 lg:col-4">
+          <div class="portfolio col-6 md:col-4 lg:col-4">
             <article class="group" data-filter="branding">
               <div class="relative overflow-hidden w-full aspect-[4/3] rounded-xl">
                 <img src="./assets/img/portfolio/portfolio-5.png" alt="SEO Services"
@@ -755,7 +769,7 @@
             </article>
           </div>
 
-          <div class="portfolio col-12 sm:col-6 lg:col-4">
+          <div class="portfolio col-6 md:col-4 lg:col-4">
             <article class="group" data-filter="marketing">
               <div class="relative overflow-hidden w-full aspect-[4/3] rounded-xl">
                 <img src="./assets/img/portfolio/portfolio-6.png" alt="Product Design"
@@ -829,10 +843,10 @@
 
         <div class="row justify-center">
 
-          <div class="scroll-revealed col-12 sm:col-6 md:col-4 lg:col-4">
+          <div class="scroll-revealed col-6 md:col-4 lg:col-4">
             <figure
-              class="group rounded-xl bg-body-light-1 dark:bg-body-dark-12/10 px-5 pb-10 pt-12 shadow-card-2 hover:shadow-lg hover:-translate-y-1">
-              <div class="relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
+              class="team-card group rounded-xl bg-body-light-1 dark:bg-body-dark-12/10 px-5 pb-10 pt-12 shadow-card-2 hover:shadow-lg hover:-translate-y-1">
+              <div class="team-avatar relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
                 <img src="./assets/img/avatar/shrawan.png" alt="Team picture"
                   class="h-full w-full rounded-full object-cover" />
                 <span
@@ -841,10 +855,10 @@
                   class="absolute top-0 right-0 -z-10 h-10 w-10 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100"></span>
               </div>
               <figcaption class="text-center block">
-                <h4 class="mb-1 text-lg font-semibold text-body-light-12 dark:text-body-dark-12">
+                <h4 class="team-name mb-1 text-lg font-semibold text-body-light-12 dark:text-body-dark-12">
                   Shrawan Gupta
                 </h4>
-                <p class="mb-5 text-sm text-body-light-11 dark:text-body-dark-11">
+                <p class="team-role mb-5 text-sm text-body-light-11 dark:text-body-dark-11">
                   Founder & Director
                 </p>
                 <div class="flex items-center justify-center gap-5">
@@ -857,10 +871,10 @@
             </figure>
           </div>
 
-          <div class="scroll-revealed col-12 sm:col-6 md:col-4 lg:col-4">
+          <div class="scroll-revealed col-6 md:col-4 lg:col-4">
             <figure
-              class="group rounded-xl bg-body-light-1 dark:bg-body-dark-12/10 px-5 pb-10 pt-12 shadow-card-2 hover:shadow-lg hover:-translate-y-1">
-              <div class="relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
+              class="team-card group rounded-xl bg-body-light-1 dark:bg-body-dark-12/10 px-5 pb-10 pt-12 shadow-card-2 hover:shadow-lg hover:-translate-y-1">
+              <div class="team-avatar relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
                 <img src="./assets/img/avatar/deepak.png" alt="Team picture"
                   class="h-full w-full rounded-full object-cover" />
                 <span
@@ -869,10 +883,10 @@
                   class="absolute top-0 right-0 -z-10 h-10 w-10 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100"></span>
               </div>
               <figcaption class="text-center block">
-                <h4 class="mb-1 text-lg font-semibold text-body-light-12 dark:text-body-dark-12">
+                <h4 class="team-name mb-1 text-lg font-semibold text-body-light-12 dark:text-body-dark-12">
                   Deepak Yadav
                 </h4>
-                <p class="mb-5 text-sm text-body-light-11 dark:text-body-dark-11">
+                <p class="team-role mb-5 text-sm text-body-light-11 dark:text-body-dark-11">
                   Co-Founder & Director
                 </p>
                 <div class="flex items-center justify-center gap-5">
@@ -884,10 +898,10 @@
             </figure>
           </div>
 
-          <div class="scroll-revealed col-12 sm:col-6 md:col-4 lg:col-4">
+          <div class="scroll-revealed col-6 md:col-4 lg:col-4">
             <figure
-              class="group rounded-xl bg-body-light-1 dark:bg-body-dark-12/10 px-5 pb-10 pt-12 shadow-card-2 hover:shadow-lg hover:-translate-y-1">
-              <div class="relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
+              class="team-card group rounded-xl bg-body-light-1 dark:bg-body-dark-12/10 px-5 pb-10 pt-12 shadow-card-2 hover:shadow-lg hover:-translate-y-1">
+              <div class="team-avatar relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
                 <img src="./assets/img/avatar/samir.jpg" alt="Team picture"
                   class="h-full w-full rounded-full object-cover" />
                 <span
@@ -896,10 +910,10 @@
                   class="absolute top-0 right-0 -z-10 h-10 w-10 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100"></span>
               </div>
               <figcaption class="text-center block">
-                <h4 class="mb-1 text-lg font-semibold text-body-light-12 dark:text-body-dark-12">
+                <h4 class="team-name mb-1 text-lg font-semibold text-body-light-12 dark:text-body-dark-12">
                   Sameer Shrinath
                 </h4>
-                <p class="mb-5 text-sm text-body-light-11 dark:text-body-dark-11">
+                <p class="team-role mb-5 text-sm text-body-light-11 dark:text-body-dark-11">
                   Chief Executive Officer (CEO) & CTO
                 </p>
                 <div class="flex items-center justify-center gap-5">
@@ -911,10 +925,10 @@
             </figure>
           </div>
 
-          <div class="scroll-revealed col-12 sm:col-6 md:col-4 lg:col-4">
+          <div class="scroll-revealed col-6 md:col-4 lg:col-4">
             <figure
-              class="group rounded-xl bg-body-light-1 dark:bg-body-dark-12/10 px-5 pb-10 pt-12 shadow-card-2 hover:shadow-lg hover:-translate-y-1">
-              <div class="relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
+              class="team-card group rounded-xl bg-body-light-1 dark:bg-body-dark-12/10 px-5 pb-10 pt-12 shadow-card-2 hover:shadow-lg hover:-translate-y-1">
+              <div class="team-avatar relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
                 <img src="./assets/img/avatar/banty.png" alt="Team picture"
                   class="h-full w-full rounded-full object-cover" />
                 <span
@@ -923,10 +937,10 @@
                   class="absolute top-0 right-0 -z-10 h-10 w-10 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100"></span>
               </div>
               <figcaption class="text-center block">
-                <h4 class="mb-1 text-lg font-semibold text-body-light-12 dark:text-body-dark-12">
+                <h4 class="team-name mb-1 text-lg font-semibold text-body-light-12 dark:text-body-dark-12">
                   Banty Sharma
                 </h4>
-                <p class="mb-5 text-sm text-body-light-11 dark:text-body-dark-11">
+                <p class="team-role mb-5 text-sm text-body-light-11 dark:text-body-dark-11">
                   Chief Marketing Officer (CMO)
 
                 </p>
@@ -939,10 +953,10 @@
             </figure>
           </div>
 
-          <div class="scroll-revealed col-12 sm:col-6 md:col-4 lg:col-4">
+          <div class="scroll-revealed col-6 md:col-4 lg:col-4">
             <figure
-              class="group rounded-xl bg-body-light-1 dark:bg-body-dark-12/10 px-5 pb-10 pt-12 shadow-card-2 hover:shadow-lg hover:-translate-y-1">
-              <div class="relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
+              class="team-card group rounded-xl bg-body-light-1 dark:bg-body-dark-12/10 px-5 pb-10 pt-12 shadow-card-2 hover:shadow-lg hover:-translate-y-1">
+              <div class="team-avatar relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
                 <img src="./assets/img/avatar/sejal.png" alt="Team picture"
                   class="h-full w-full rounded-full object-cover" />
                 <span
@@ -951,10 +965,10 @@
                   class="absolute top-0 right-0 -z-10 h-10 w-10 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100"></span>
               </div>
               <figcaption class="text-center block">
-                <h4 class="mb-1 text-lg font-semibold text-body-light-12 dark:text-body-dark-12">
+                <h4 class="team-name mb-1 text-lg font-semibold text-body-light-12 dark:text-body-dark-12">
                   Sejal Gupta
                 </h4>
-                <p class="mb-5 text-sm text-body-light-11 dark:text-body-dark-11">
+                <p class="team-role mb-5 text-sm text-body-light-11 dark:text-body-dark-11">
                   Head of Human Resources (HR)
 
                 </p>
@@ -1625,64 +1639,64 @@
         </div>
 
         <div class="row">
-          <div class="scroll-revealed col-12 sm:col-6 lg:col-4">
-            <article class="group">
+          <div class="scroll-revealed col-6 lg:col-4">
+            <article class="blog-card group">
               <div class="relative">
                 <a href="javascript:void(0)" class="w-full aspect-[3/2] rounded-xl overflow-hidden block">
                   <img src="./assets/img/thumbnail/thumbnail-1.png" alt="Thumbnail"
                     class="w-full h-full object-cover group-hover:scale-[1.05] group-hover:rotate-[2deg]" />
                 </a>
               </div>
-              <span class="block mt-6 w-full text-sm text-body-light-10 dark:text-body-dark-10">Utsanova - 1 Mar
+              <span class="blog-meta block mt-6 w-full text-sm text-body-light-10 dark:text-body-dark-10">Utsanova - 1 Mar
                 2026</span>
-              <h4 class="mb-6 mt-3 font-semibold text-[1.5rem]">
+              <h4 class="blog-title mb-6 mt-3 font-semibold text-[1.5rem]">
                 <a href="javascript:void(0)" class="text-body-light-12 dark:text-body-dark-12">Building the Future of
                   Event Management</a>
               </h4>
-              <p>
+              <p class="blog-summary">
                 Insights into how Utsanova is creating a unified platform for weddings, college fests, and corporate
                 events.
               </p>
             </article>
           </div>
 
-          <div class="scroll-revealed col-12 sm:col-6 lg:col-4">
-            <article class="group">
+          <div class="scroll-revealed col-6 lg:col-4">
+            <article class="blog-card group">
               <div class="relative">
                 <a href="javascript:void(0)" class="w-full aspect-[3/2] rounded-xl overflow-hidden block">
                   <img src="./assets/img/thumbnail/thumbnail-2.png" alt="Thumbnail"
                     class="w-full h-full object-cover group-hover:scale-[1.05] group-hover:rotate-[2deg]" />
                 </a>
               </div>
-              <span class="block mt-6 w-full text-sm text-body-light-10 dark:text-body-dark-10">Utsanova - 1 Mar
+              <span class="blog-meta block mt-6 w-full text-sm text-body-light-10 dark:text-body-dark-10">Utsanova - 1 Mar
                 2026</span>
-              <h4 class="mb-6 mt-3 font-semibold text-[1.5rem]">
+              <h4 class="blog-title mb-6 mt-3 font-semibold text-[1.5rem]">
                 <a href="javascript:void(0)" class="text-body-light-12 dark:text-body-dark-12">How Technology is
                   Transforming Events
                 </a>
               </h4>
-              <p>
+              <p class="blog-summary">
                 Explore how digital platforms, ticketing systems, and vendor marketplaces are changing the event
                 industry.
               </p>
             </article>
           </div>
 
-          <div class="scroll-revealed col-12 sm:col-6 lg:col-4">
-            <article class="group">
+          <div class="scroll-revealed col-6 lg:col-4">
+            <article class="blog-card group">
               <div class="relative">
                 <a href="javascript:void(0)" class="w-full aspect-[3/2] rounded-xl overflow-hidden block">
                   <img src="./assets/img/thumbnail/thumbnail-3.png" alt="Thumbnail"
                     class="w-full h-full object-cover group-hover:scale-[1.05] group-hover:rotate-[2deg]" />
                 </a>
               </div>
-              <span class="block mt-6 w-full text-sm text-body-light-10 dark:text-body-dark-10">Utsanova - 1 Mar
+              <span class="blog-meta block mt-6 w-full text-sm text-body-light-10 dark:text-body-dark-10">Utsanova - 1 Mar
                 2026</span>
-              <h4 class="mb-6 mt-3 font-semibold text-[1.5rem]">
+              <h4 class="blog-title mb-6 mt-3 font-semibold text-[1.5rem]">
                 <a href="javascript:void(0)" class="text-body-light-12 dark:text-body-dark-12">Scaling a Startup from
                   Idea to Execution</a>
               </h4>
-              <p>
+              <p class="blog-summary">
                 A look into our journey of building Utsanova, from concept to creating scalable digital solutions.
               </p>
             </article>
@@ -1785,7 +1799,7 @@
                   <div>
                     <h4 class="text-[1.25rem] text-primary mb-3">Contact</h4>
                     <p class="m-0">+91 8690388005</p>
-                    <p class="m-0">Shrawan.gupta.official@gmail.com</p>
+                    <p class="m-0">official@utsanova.com</p>
                   </div>
                 </div>
               </div>

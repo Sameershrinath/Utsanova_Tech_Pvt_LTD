@@ -80,6 +80,192 @@
     .toc-nav::-webkit-scrollbar-thumb:hover {
       background: rgba(255, 255, 255, 0.3);
     }
+
+    .mobile-toc-wrapper {
+      display: none;
+      width: 100%;
+    }
+
+    .mobile-toc-toggle {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 12px 14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .mobile-toc-panel {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+    }
+
+    .mobile-toc-panel.open {
+      display: block;
+    }
+
+    .mobile-toc-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(2px);
+    }
+
+    .mobile-toc-drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(84vw, 340px);
+      height: 100%;
+      background: #17234b;
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: -16px 0 40px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-toc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .mobile-toc-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .mobile-toc-close {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 1rem;
+    }
+
+    .mobile-toc-links {
+      overflow-y: auto;
+      padding: 10px 10px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mobile-toc-links .toc-link {
+      display: block;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.88rem;
+      line-height: 1.35;
+      border-radius: 10px;
+      padding: 10px 12px;
+      transition: background-color 0.2s ease;
+    }
+
+    .mobile-toc-links .toc-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .body-lock {
+      overflow: hidden;
+    }
+
+    @media (max-width: 767px) {
+      .sticky-toc,
+      .toc-box,
+      .toc-nav {
+        display: none !important;
+      }
+
+      .mobile-toc-wrapper {
+        display: block;
+        margin-bottom: 14px;
+      }
+
+      .privacy-content {
+        min-width: 0;
+        flex: 1 1 auto;
+        width: 100%;
+      }
+
+      .privacy-content .shadow-card-2 {
+        width: 100%;
+      }
+
+      .privacy-layout {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .scroll-mt-24 {
+        scroll-margin-top: 95px;
+      }
+
+      .main {
+        padding-top: 98px;
+      }
+
+      .privacy-content .shadow-card-2 {
+        padding: 18px 16px;
+      }
+
+      .privacy-content h2 {
+        font-size: 1.75rem;
+        line-height: 1.2;
+      }
+
+      .privacy-content h3 {
+        font-size: 1.3rem;
+        line-height: 1.35;
+        margin-bottom: 12px;
+      }
+
+      .privacy-content h4 {
+        font-size: 1.06rem;
+        line-height: 1.4;
+      }
+
+      .privacy-content .text-lg,
+      .privacy-content p,
+      .privacy-content li {
+        font-size: 0.97rem !important;
+        line-height: 1.68;
+        overflow-wrap: anywhere;
+        word-break: normal;
+      }
+
+      .privacy-content section {
+        margin-bottom: 34px;
+      }
+
+      .privacy-content ol,
+      .privacy-content ul {
+        padding-left: 1.2rem;
+      }
+
+      .privacy-content h2,
+      .privacy-content h3,
+      .privacy-content h4 {
+        overflow-wrap: anywhere;
+      }
+    }
   </style>
 
   <script>
@@ -126,6 +312,18 @@
                   <a href="index.html#contact"
                     class="mx-8 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-primary-color lg:dark:text-primary-color lg:group-hover:text-primary-color lg:group-hover:opacity-70"
                     role="menuitem">Contact</a>
+                </li>
+
+                <li class="group relative lg:hidden">
+                  <a href="login.html"
+                    class="mx-8 mt-2 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12"
+                    role="menuitem">Sign In</a>
+                </li>
+
+                <li class="group relative lg:hidden">
+                  <a href="signup.html"
+                    class="mx-8 flex py-2 text-base font-medium text-primary-color"
+                    role="menuitem">Get Started</a>
                 </li>
                 
               </ul>
@@ -174,7 +372,7 @@
    
     <section class="section-area !pt-10 !pb-0">
       <div class="container">
-        <div class="flex gap-6 lg:gap-8">
+        <div class="flex gap-6 lg:gap-8 privacy-layout">
           <!-- LEFT SIDEBAR -->
           <aside class="hidden lg:block w-64 flex-shrink-0 sticky-toc">
             <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 toc-box">
@@ -200,6 +398,26 @@
               </nav>
             </div>
           </aside>
+
+          <div class="mobile-toc-wrapper lg:hidden">
+            <button type="button" id="mobileTocToggle" class="mobile-toc-toggle" aria-expanded="false" aria-controls="mobileTocPanel">
+              <span> Table of Contents</span>
+              <i class="lni lni-chevron-down"></i>
+            </button>
+          </div>
+
+          <div id="mobileTocPanel" class="mobile-toc-panel" aria-hidden="true">
+            <div id="mobileTocBackdrop" class="mobile-toc-backdrop"></div>
+            <div class="mobile-toc-drawer" role="dialog" aria-modal="true" aria-label="Privacy sections">
+              <div class="mobile-toc-header">
+                <span class="mobile-toc-title">Table of Contents</span>
+                <button type="button" id="mobileTocClose" class="mobile-toc-close" aria-label="Close table of contents">
+                  <i class="lni lni-close"></i>
+                </button>
+              </div>
+              <nav id="mobileTocLinks" class="mobile-toc-links" aria-label="Privacy sections"></nav>
+            </div>
+          </div>
 
       <div class="privacy-content">
           <!-- MAIN CONTENT -->
@@ -551,20 +769,82 @@
       await Auth.logout();
     }
 
-    // Highlight active section in sidebar
+    function initMobileToc() {
+      const mobileToggle = document.getElementById('mobileTocToggle');
+      const mobilePanel = document.getElementById('mobileTocPanel');
+      const mobileClose = document.getElementById('mobileTocClose');
+      const mobileBackdrop = document.getElementById('mobileTocBackdrop');
+      const mobileLinks = document.getElementById('mobileTocLinks');
+      const desktopLinks = document.querySelectorAll('aside a[href^="#section-"]');
+
+      if (!mobileToggle || !mobilePanel || !mobileLinks || desktopLinks.length === 0) {
+        return;
+      }
+
+      desktopLinks.forEach((link) => {
+        const clonedLink = link.cloneNode(true);
+        clonedLink.classList.add('toc-link');
+        clonedLink.addEventListener('click', () => closeMobileToc());
+        mobileLinks.appendChild(clonedLink);
+      });
+
+      function openMobileToc() {
+        mobilePanel.classList.add('open');
+        mobilePanel.setAttribute('aria-hidden', 'false');
+        mobileToggle.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('body-lock');
+      }
+
+      function closeMobileToc() {
+        mobilePanel.classList.remove('open');
+        mobilePanel.setAttribute('aria-hidden', 'true');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('body-lock');
+      }
+
+      mobileToggle.addEventListener('click', () => {
+        if (mobilePanel.classList.contains('open')) {
+          closeMobileToc();
+        } else {
+          openMobileToc();
+        }
+      });
+
+      if (mobileClose) {
+        mobileClose.addEventListener('click', closeMobileToc);
+      }
+
+      if (mobileBackdrop) {
+        mobileBackdrop.addEventListener('click', closeMobileToc);
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && mobilePanel.classList.contains('open')) {
+          closeMobileToc();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+          closeMobileToc();
+        }
+      });
+    }
+
+    // Highlight active section in sidebar and mobile TOC
     function highlightActiveSection() {
       const sections = document.querySelectorAll('section[id^="section-"]');
-      const navLinks = document.querySelectorAll('aside a[href^="#section-"]');
 
       window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach((section) => {
           const sectionTop = section.offsetTop;
-          if (pageYOffset >= sectionTop - 200) {
+          if (window.pageYOffset >= sectionTop - 200) {
             current = section.getAttribute('id');
           }
         });
 
+        const navLinks = document.querySelectorAll('aside a[href^="#section-"], #mobileTocLinks a[href^="#section-"]');
         navLinks.forEach((link) => {
           link.classList.remove('nav-link-active');
           if (link.getAttribute('href') === `#${current}`) {
@@ -575,7 +855,10 @@
     }
 
     // Initialize on page load
-    document.addEventListener('DOMContentLoaded', highlightActiveSection);
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileToc();
+      highlightActiveSection();
+    });
   </script>
 
   <script>
