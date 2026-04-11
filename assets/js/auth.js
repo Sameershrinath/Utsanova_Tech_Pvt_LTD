@@ -164,7 +164,7 @@ const Auth = {
   },
 
   // Redirect logged-in users away from auth pages (login/signup)
-  redirectIfLoggedIn(redirectTo = 'dashboard.html') {
+  redirectIfLoggedIn(redirectTo = 'index.html#home') {
     auth.onAuthStateChanged((user) => {
       if (user) {
         window.location.href = redirectTo;

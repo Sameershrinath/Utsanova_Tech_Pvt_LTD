@@ -179,7 +179,7 @@
       if (result.success) {
         showMessage('success', result.message);
         setTimeout(() => {
-          window.location.href = 'dashboard.html';
+          window.location.href = 'index.html#home';
         }, 2000);
       } else {
         showMessage('error', result.message);
@@ -195,7 +195,7 @@
       if (result.success) {
         showMessage('success', 'Account created! Redirecting...');
         setTimeout(() => {
-          window.location.href = 'dashboard.html';
+          window.location.href = 'index.html#home';
         }, 800);
       } else {
         showMessage('error', result.message);
