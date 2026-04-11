@@ -335,3 +335,70 @@ function highlightCenterLogo() {
 
 // Run continuously
 setInterval(highlightCenterLogo, 100);
+
+// Contact form -> Firestore
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm && typeof db !== "undefined" && typeof firebase !== "undefined") {
+  const contactFormSubmit = document.getElementById("contactFormSubmit");
+  const contactFormStatus = document.getElementById("contactFormStatus");
+
+  const setContactFormStatus = (message, isError = false) => {
+    if (!contactFormStatus) {
+      return;
+    }
+
+    contactFormStatus.textContent = message;
+    contactFormStatus.className = isError
+      ? "text-center text-sm font-medium text-red-500"
+      : "text-center text-sm font-medium text-green-600";
+  };
+
+  contactForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const name = contactForm.elements.namedItem("name")?.value.trim();
+    const email = contactForm.elements.namedItem("email")?.value.trim();
+    const phone = contactForm.elements.namedItem("phone")?.value.trim();
+    const subject = contactForm.elements.namedItem("subject")?.value.trim();
+    const message = contactForm.elements.namedItem("message")?.value.trim();
+
+    if (!name || !email || !phone || !subject || !message) {
+      setContactFormStatus("Please fill in all contact form fields.", true);
+      return;
+    }
+
+    if (contactFormSubmit) {
+      contactFormSubmit.disabled = true;
+      contactFormSubmit.textContent = "Sending...";
+    }
+
+    setContactFormStatus("Sending your message...");
+
+    try {
+      await db.collection("contacts").add({
+        name,
+        email,
+        phone,
+        subject,
+        message,
+        source: "website-contact-form",
+        pageTitle: document.title,
+        pageUrl: window.location.href,
+        status: "new",
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+
+      contactForm.reset();
+      setContactFormStatus("Your message has been sent successfully.");
+    } catch (error) {
+      console.error("Failed to submit contact form:", error);
+      setContactFormStatus("Unable to send your message right now. Please try again.", true);
+    } finally {
+      if (contactFormSubmit) {
+        contactFormSubmit.disabled = false;
+        contactFormSubmit.textContent = "Send Message";
+      }
+    }
+  });
+}
