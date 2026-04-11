@@ -71,6 +71,13 @@
       background: rgba(255, 255, 255, 0.3);
     }
   </style>
+
+  <script>
+    (function () {
+      localStorage.setItem('Inazuma_WebTheme', 'dark');
+      document.documentElement.dataset.webTheme = 'dark';
+    })();
+  </script>
 </head>
 
 <body>
@@ -116,8 +123,8 @@
           </div>
         
           <div class="flex items-center justify-end pr-[52px] lg:pr-0">
-            <button type="button" class="inline-flex items-center text-primary-color text-[24px]/none"
-              aria-label="Switch theme" data-web-trigger="web-theme"></button>
+            <button type="button" class="inline-flex items-center text-primary-color text-[24px]/none" style="display:none;"
+              aria-label="Switch theme" data-web-trigger="web-theme" aria-hidden="true" tabindex="-1"></button>
             <div class="hidden sm:flex items-center" id="navAuthButtons">
               <div id="navLoggedOut" class="flex items-center gap-3">
                 <a href="login.html"
@@ -559,6 +566,27 @@
 
     // Initialize on page load
     document.addEventListener('DOMContentLoaded', highlightActiveSection);
+  </script>
+
+  <script>
+    function forcePrivacyDarkTheme() {
+      const html = document.documentElement;
+      html.dataset.webTheme = 'dark';
+      localStorage.setItem('Inazuma_WebTheme', 'dark');
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', forcePrivacyDarkTheme);
+    } else {
+      forcePrivacyDarkTheme();
+    }
+
+    window.addEventListener('load', forcePrivacyDarkTheme);
+
+    const themeButton = document.querySelector('[data-web-trigger="web-theme"]');
+    if (themeButton) {
+      themeButton.addEventListener('click', forcePrivacyDarkTheme);
+    }
   </script>
 </body>
 
