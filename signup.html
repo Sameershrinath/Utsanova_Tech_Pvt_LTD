@@ -22,7 +22,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon/512-512.png">
 
 <!-- Manifest (optional but recommended) -->
-<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="manifest" href="/assets/favicon/site.webmanifest.json">
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -41,7 +41,7 @@
     <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px;">
       <div class="auth-card">
         <a href="index.html">
-          <img src="./assets/img/utsanova_mono.svg" alt="Utsanova" class="auth-logo" />
+          <img loading="lazy" decoding="async" src="./assets/img/utsanova_mono.svg" alt="Utsanova" class="auth-logo" />
         </a>
 
         <h1 class="auth-title">Create Account</h1>
@@ -113,7 +113,7 @@
 
           <label class="auth-checkbox">
             <input type="checkbox" id="agreeTerms" required />
-            <span>I agree to the <a href="#" class="auth-link">Terms of Service</a> and <a href="#" class="auth-link">Privacy Policy</a></span>
+            <span>I agree to the <a href="#" class="auth-link">Terms of Service</a> and <a href="./privacy-policy.html" class="auth-link">Privacy Policy</a></span>
           </label>
 
           <button type="submit" id="signupSubmitBtn" class="auth-btn auth-btn-primary">

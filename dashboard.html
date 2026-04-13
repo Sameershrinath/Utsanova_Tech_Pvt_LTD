@@ -45,7 +45,7 @@
           <div class="ic-navbar-container relative -mx-5 flex items-center justify-between">
             <div class="w-60 lg:w-56 max-w-full px-5">
               <a href="index.html#home" class="ic-navbar-logo block w-full py-5 text-primary-color">
-                <img class="w-50" src="./assets/img/utsanova_mono.svg" alt="Utsanova">
+                <img loading="lazy" decoding="async" class="w-50" src="./assets/img/utsanova_mono.svg" alt="Utsanova">
               </a>
             </div>
             <div class="flex w-full items-center justify-between px-5">
@@ -262,7 +262,7 @@
 
         const avatarEl = document.getElementById('navAvatarEl');
         if (user.photoURL) {
-          avatarEl.innerHTML = `<img src="${user.photoURL}" class="nav-user-avatar" referrerpolicy="no-referrer" alt="Profile" />`;
+          avatarEl.innerHTML = `<img loading="lazy" decoding="async" src="${user.photoURL}" class="nav-user-avatar" referrerpolicy="no-referrer" alt="Profile" />`;
         } else {
           const initials = (user.displayName || 'U').split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
           avatarEl.innerHTML = `<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3d63dd,#5a7ef5);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:#fff;border:2px solid rgba(255,255,255,0.3);cursor:pointer;">${initials}</div>`;
@@ -325,7 +325,7 @@
       // Avatar
       const avatarContainer = document.getElementById('userAvatarContainer');
       if (user.photoURL) {
-        avatarContainer.innerHTML = `<img src="${user.photoURL}" alt="Profile" class="user-avatar" referrerpolicy="no-referrer" />`;
+        avatarContainer.innerHTML = `<img loading="lazy" decoding="async" src="${user.photoURL}" alt="Profile" class="user-avatar" referrerpolicy="no-referrer" />`;
       } else {
         const initials = displayName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
         avatarContainer.innerHTML = `<div class="user-avatar-placeholder">${initials}</div>`;
