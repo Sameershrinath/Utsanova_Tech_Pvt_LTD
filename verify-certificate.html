@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>Verify Certificate | Utsanova Technologies</title>
+  <meta name="description" content="Verify the authenticity of your Utsanova Technologies internship certificate using your unique 5-digit alphanumeric code." />
+
+  <!-- Standard Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/1616.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/3232.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon/4848.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Verify Certificate | Utsanova Technologies" />
+  <meta property="og:description" content="Verify the authenticity of your Utsanova Technologies internship certificate." />
+  <meta property="og:type" content="website" />
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/180-180.png">
+
+  <!-- Android / PWA Icons -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/192-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon/512-512.png">
+
+  <!-- Manifest -->
+  <link rel="manifest" href="/assets/favicon/site.webmanifest.json">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-65S3HC6MS0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-65S3HC6MS0');
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #5C6BC0;
+      --primary-dark: #3949AB;
+      --primary-light: #7986CB;
+      --bg: #0d0e1a;
+      --bg-card: #13152b;
+      --border: rgba(255, 255, 255, 0.08);
+      --text-main: #f0f0f8;
+      --text-muted: #8a8fb5;
+      --success: #22c55e;
+      --error: #ef4444;
+      --radius: 16px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Animated background orbs ─────────────────────────── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.18;
+      animation: float 8s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 420px; height: 420px; background: var(--primary); top: -100px; left: -100px; animation-delay: 0s; }
+    .orb-2 { width: 300px; height: 300px; background: #9c27b0; bottom: -80px; right: -60px; animation-delay: 2s; }
+    .orb-3 { width: 200px; height: 200px; background: #00bcd4; top: 50%; left: 60%; animation-delay: 4s; }
+
+    @keyframes float {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(20px, 30px) scale(1.06); }
+    }
+
+    /* ── Back link ────────────────────────────────────────── */
+    .back-link {
+      position: fixed;
+      top: 24px;
+      left: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+      z-index: 10;
+    }
+    .back-link:hover { color: var(--primary-light); }
+
+    /* ── Card ─────────────────────────────────────────────── */
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    /* ── Logo ─────────────────────────────────────────────── */
+    .logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 32px;
+    }
+    .logo-wrap img { height: 36px; width: auto; }
+
+    /* ── Shield icon ──────────────────────────────────────── */
+    .shield-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 0 0 12px rgba(92, 107, 192, 0.12);
+    }
+    .shield-icon svg { width: 34px; height: 34px; color: #fff; }
+
+    h1.card-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #fff 40%, var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-subtitle {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+
+    /* ── Input group ──────────────────────────────────────── */
+    .input-group {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 15px 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-align: center;
+      text-transform: uppercase;
+      transition: border-color 0.25s, background 0.25s;
+      outline: none;
+    }
+    .input-group input::placeholder {
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      font-weight: 400;
+    }
+    .input-group input:focus {
+      border-color: var(--primary);
+      background: rgba(92, 107, 192, 0.06);
+    }
+
+    .input-hint {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* ── Submit button ────────────────────────────────────── */
+    .btn-verify {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 24px rgba(92, 107, 192, 0.35);
+      margin-bottom: 28px;
+    }
+    .btn-verify:hover:not(:disabled) {
+      opacity: 0.92;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 32px rgba(92, 107, 192, 0.45);
+    }
+    .btn-verify:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+    /* ── Result box ───────────────────────────────────────── */
+    .result-box {
+      display: none;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      text-align: left;
+      animation: fadeInUp 0.4s ease;
+    }
+    .result-box.not-verified {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1.5px solid rgba(239, 68, 68, 0.35);
+    }
+    .result-box.verified {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1.5px solid rgba(34, 197, 94, 0.35);
+    }
+
+    .result-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .result-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .not-verified .result-icon { background: rgba(239, 68, 68, 0.15); color: var(--error); }
+    .verified .result-icon     { background: rgba(34, 197, 94, 0.15);  color: var(--success); }
+
+    .result-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .not-verified .result-title { color: var(--error); }
+    .verified .result-title     { color: var(--success); }
+
+    .result-message {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      padding-left: 48px;
+    }
+
+    /* ── Spinner ──────────────────────────────────────────── */
+    .spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    .btn-verify.loading .spinner { display: block; }
+    .btn-verify.loading .btn-text { display: none; }
+    .btn-verify.loading .btn-icon { display: none; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    .card-footer {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .card-footer a {
+      color: var(--primary-light);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .card-footer a:hover { text-decoration: underline; }
+
+    /* ── Divider ──────────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 24px 0;
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 520px) {
+      .card { padding: 36px 24px; }
+      h1.card-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Animated background orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- Back to home -->
+  <a href="index.html#careers" class="back-link">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+    Back to Careers
+  </a>
+
+  <!-- Main Card -->
+  <div class="card">
+
+    <!-- Logo -->
+    <a href="index.html" class="logo-wrap">
+      <img loading="lazy" decoding="async" src="./assets/img/utsanova.svg" alt="Utsanova Technologies" />
+    </a>
+
+    <!-- Shield Icon -->
+    <div class="shield-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </div>
+
+    <h1 class="card-title">Certificate Verification</h1>
+    <p class="card-subtitle">
+      Enter the unique 5-digit alphanumeric code printed on your Utsanova internship certificate to verify its authenticity.
+    </p>
+
+    <!-- Verification Form -->
+    <form id="verifyForm" onsubmit="verifyCertificate(event)" autocomplete="off">
+      <div class="input-group">
+        <input
+          type="text"
+          id="certCode"
+          name="certCode"
+          maxlength="5"
+          minlength="5"
+          placeholder="e.g. A1B2C"
+          pattern="[A-Za-z0-9]{5}"
+          required
+          aria-label="Certificate code"
+          oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); clearResult();"
+        />
+      </div>
+      <p class="input-hint">5-character alphanumeric code (letters &amp; numbers only)</p>
+
+      <button type="submit" id="verifyBtn" class="btn-verify">
+        <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10"></polyline>
+        </svg>
+        <span class="btn-text">Verify Certificate</span>
+        <div class="spinner"></div>
+      </button>
+    </form>
+
+    <!-- Result Box -->
+    <div id="resultBox" class="result-box" role="alert" aria-live="polite">
+      <div class="result-header">
+        <div class="result-icon" id="resultIcon">
+          <!-- Icon injected by JS -->
+        </div>
+        <div class="result-title" id="resultTitle"></div>
+      </div>
+      <div class="result-message" id="resultMessage"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="card-footer">
+      Need help? Contact us at
+      <a href="mailto:hr@utsanova.com">hr@utsanova.com</a>
+    </p>
+  </div>
+
+  <script>
+    /**
+     * verifyCertificate()
+     *
+     * Currently always returns "Not Verified" for every code because
+     * the certificate database has not been set up yet.
+     *
+     * ─────────────────────────────────────────────────────────────────
+     * TODO: DATABASE INTEGRATION
+     * When the database is ready, replace the contents of the
+     * checkCertificateInDatabase() function below with a real API call.
+     *
+     * Example (using a REST API):
+     *   const response = await fetch(`/api/verify-certificate?code=${code}`);
+     *   const data = await response.json();
+     *   return data.isValid;  // true if certificate found, false if not
+     *
+     * Example (using Firebase Firestore):
+     *   const db = firebase.firestore();
+     *   const doc = await db.collection('certificates').doc(code).get();
+     *   return doc.exists;
+     * ─────────────────────────────────────────────────────────────────
+     */
+    async function checkCertificateInDatabase(code) {
+      // ─── PLACEHOLDER: Database not connected yet ──────────────────
+      // Always returns false (Not Verified) until database is integrated.
+      // Remove this line and implement real DB logic when ready.
+      return false;
+      // ─────────────────────────────────────────────────────────────
+    }
+
+    async function verifyCertificate(e) {
+      e.preventDefault();
+
+      const code = document.getElementById('certCode').value.trim().toUpperCase();
+
+      // Basic validation (5 alphanumeric chars)
+      if (!/^[A-Z0-9]{5}$/.test(code)) {
+        showResult(false, 'Invalid Format', 'Please enter exactly 5 letters or numbers.');
+        return;
+      }
+
+      // Show loading state
+      setLoading(true);
+
+      // Simulate a small network delay for UX realism
+      await new Promise(resolve => setTimeout(resolve, 900));
+
+      // Check database (currently always returns false)
+      const isValid = await checkCertificateInDatabase(code);
+
+      setLoading(false);
+
+      if (isValid) {
+        // ── Verified ───────────────────────────────────────────────
+        showResult(
+          true,
+          '✓ Certificate Verified',
+          `Certificate with code <strong>${code}</strong> is authentic and was issued by Utsanova Technologies Pvt. Ltd.`
+        );
+      } else {
+        // ── Not Verified ───────────────────────────────────────────
+        showResult(
+          false,
+          '✗ Not Verified',
+          `No certificate found with code <strong>${code}</strong>. Please double-check the code on your certificate or contact us at hr@utsanova.com.`
+        );
+      }
+    }
+
+    function showResult(isValid, title, message) {
+      const box     = document.getElementById('resultBox');
+      const icon    = document.getElementById('resultIcon');
+      const titleEl = document.getElementById('resultTitle');
+      const msgEl   = document.getElementById('resultMessage');
+
+      // Reset classes
+      box.classList.remove('verified', 'not-verified');
+      box.classList.add(isValid ? 'verified' : 'not-verified');
+
+      // Icon
+      icon.innerHTML = isValid
+        ? `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`
+        : `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+
+      titleEl.textContent = title;
+      msgEl.innerHTML     = message;
+      box.style.display   = 'block';
+    }
+
+    function clearResult() {
+      const box = document.getElementById('resultBox');
+      box.style.display = 'none';
+    }
+
+    function setLoading(loading) {
+      const btn = document.getElementById('verifyBtn');
+      if (loading) {
+        btn.classList.add('loading');
+        btn.disabled = true;
+      } else {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    }
+  </script>
+
+</body>
+</html>
