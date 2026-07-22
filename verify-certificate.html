@@ -354,28 +354,29 @@
   
 
     <h1 class="card-title">Certificate Verification</h1>
-    <p class="card-subtitle">
-      Enter the unique 5-digit alphanumeric code printed on your Utsanova internship certificate to verify its authenticity.
-    </p>
+   <p class="card-subtitle">
+    Enter the Internship ID printed on your Utsanova Technologies
+    internship certificate to verify its authenticity.
+</p>
 
     <!-- Verification Form -->
     <form id="verifyForm" onsubmit="verifyCertificate(event)" autocomplete="off">
       <div class="input-group">
-        <input
-          type="text"
-          id="certCode"
-          name="certCode"
-          maxlength="5"
-          minlength="5"
-          placeholder="e.g. A1B2C"
-          pattern="[A-Za-z0-9]{5}"
-          required
-          aria-label="Certificate code"
-          oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); clearResult();"
-        />
-      </div>
-      <p class="input-hint">5-character alphanumeric code (letters &amp; numbers only)</p>
+    <input
+        type="text"
+        id="certCode"
+        name="certCode"
+        maxlength="30"
+        placeholder="UTI/INT/XXXX/XXX"
+        required
+        aria-label="Internship ID"
+        oninput="this.value = this.value.toUpperCase(); clearResult();"
+    />
+</div>
 
+<p class="input-hint">
+    Enter the Internship ID printed on your certificate
+</p>
       <button type="submit" id="verifyBtn" class="btn-verify">
         <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -407,74 +408,107 @@
   </div>
 
   <script>
-    /**
-     * verifyCertificate()
-     *
-     * Currently always returns "Not Verified" for every code because
-     * the certificate database has not been set up yet.
-     *
-     * ─────────────────────────────────────────────────────────────────
-     * TODO: DATABASE INTEGRATION
-     * When the database is ready, replace the contents of the
-     * checkCertificateInDatabase() function below with a real API call.
-     *
-     * Example (using a REST API):
-     *   const response = await fetch(`/api/verify-certificate?code=${code}`);
-     *   const data = await response.json();
-     *   return data.isValid;  // true if certificate found, false if not
-     *
-     * Example (using Firebase Firestore):
-     *   const db = firebase.firestore();
-     *   const doc = await db.collection('certificates').doc(code).get();
-     *   return doc.exists;
-     * ─────────────────────────────────────────────────────────────────
-     */
-    async function checkCertificateInDatabase(code) {
-      // ─── PLACEHOLDER: Database not connected yet ──────────────────
-      // Always returns false (Not Verified) until database is integrated.
-      // Remove this line and implement real DB logic when ready.
-      return false;
-      // ─────────────────────────────────────────────────────────────
+    // Temporary intern records.
+// Replace this with a database/API when a backend is available.
+const interns = {
+    "UTI/INT/2026/A01": {
+        id: "UTI/INT/2026/A01",
+        name: "Prakriti Wadhwani",
+        role: "Web Developer Intern",
+        startDate: "5 May 2026",
+        endDate: "5 July 2026"
+    },
+
+    "UTI/INT/2026/A02": {
+        id: "UTI/INT/2026/A02",
+        name: "Vishal Kumar",
+        role: "Web Developer Intern",
+        startDate: "5 May 2026",
+        endDate: "5 July 2026"
     }
+};
 
-    async function verifyCertificate(e) {
-      e.preventDefault();
 
-      const code = document.getElementById('certCode').value.trim().toUpperCase();
+async function verifyCertificate(e) {
+    e.preventDefault();
 
-      // Basic validation (5 alphanumeric chars)
-      if (!/^[A-Z0-9]{5}$/.test(code)) {
-        showResult(false, 'Invalid Format', 'Please enter exactly 5 letters or numbers.');
+    const code = document
+        .getElementById("certCode")
+        .value
+        .trim()
+        .toUpperCase();
+
+    if (!code) {
+        showResult(
+            false,
+            "Invalid Internship ID",
+            "Please enter your Internship ID."
+        );
         return;
-      }
-
-      // Show loading state
-      setLoading(true);
-
-      // Simulate a small network delay for UX realism
-      await new Promise(resolve => setTimeout(resolve, 900));
-
-      // Check database (currently always returns false)
-      const isValid = await checkCertificateInDatabase(code);
-
-      setLoading(false);
-
-      if (isValid) {
-        // ── Verified ───────────────────────────────────────────────
-        showResult(
-          true,
-          '✓ Certificate Verified',
-          `Certificate with code <strong>${code}</strong> is authentic and was issued by Utsanova Technologies Pvt. Ltd.`
-        );
-      } else {
-        // ── Not Verified ───────────────────────────────────────────
-        showResult(
-          false,
-          '✗ Not Verified',
-          `No certificate found with code <strong>${code}</strong>. Please double-check the code on your certificate or contact us at hr@utsanova.com.`
-        );
-      }
     }
+
+    setLoading(true);
+
+    // Small delay for verification animation
+    await new Promise(resolve => setTimeout(resolve, 600));
+
+    const intern = interns[code];
+
+    setLoading(false);
+
+    if (intern) {
+
+        showResult(
+            true,
+            "✓ Internship Verified",
+            `
+            <div style="line-height:1.8;">
+
+                <strong>Internship ID:</strong>
+                ${intern.id}
+                <br>
+
+                <strong>Name:</strong>
+                ${intern.name}
+                <br>
+
+                <strong>Role:</strong>
+                ${intern.role}
+                <br>
+
+                <strong>Internship Period:</strong>
+                ${intern.startDate} – ${intern.endDate}
+                <br>
+
+                <strong>Organization:</strong>
+                Utsanova Technologies Pvt. Ltd.
+                <br>
+
+                <strong>Status:</strong>
+                <span style="color:#22c55e;font-weight:600;">
+                    Verified
+                </span>
+
+            </div>
+            `
+        );
+
+    } else {
+
+        showResult(
+            false,
+            "✗ Internship Not Verified",
+            `
+            No internship record was found for
+            <strong>${code}</strong>.
+            <br><br>
+            Please check the Internship ID printed on your
+            certificate or contact us at
+            <strong>hr@utsanova.com</strong>.
+            `
+        );
+    }
+}
 
     function showResult(isValid, title, message) {
       const box     = document.getElementById('resultBox');
