@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://utsanova.com/sitemap.xml
+Sitemap: https://about.utsanova.com/sitemap.xml
